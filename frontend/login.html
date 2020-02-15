@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hotels ~ Log In</title>
+
+    <link rel="stylesheet" href="css/normalize.css">
+    <link href="css/materialicons.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/materialize.css">
+    
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body class="login">
+  <header>
+    <!-- NAVBAR STARTS HERE -->
+    <div class="nav-kouk ">
+    <nav role="navigation">
+      <div class="nav-wrapper container">
+        <a href="#" class="brand-logo left ">Hotels</a>
+        <a href="#"  data-target="slide-out" class="right  sidenav-trigger"><i class="material-icons left">menu</i></a>
+        <ul id="nav-mobile" class="right hide-on-small-and-down">
+          <li><a href="index.html"><i class="material-icons left">home</i>Home</a></li>      
+          <li style="display: none;"><a href="profile.html"><i class="material-icons left">people</i>Profile</a></li>      
+          <li class="active"><a href="login.html"><i class="material-icons left">play_arrow</i>Login</a></li>     
+         </ul>
+        
+      </div>
+    </nav>
+    <!-- NAVBAR ENDS HERE -->
+
+    <!-- Sidenav user logged in  STARTS HERE-->
+    <ul id="slide-out" class="sidenav">
+      <li>
+        <div class="user-view">
+          <div class="background">
+            <img src="img/back1.jpg">
+          </div>
+          <!-- GET USER PERSONAL INFO -->
+          <!-- image/avatar -->
+          <a href="#user"><img class="circle" src="img/back.jpg"></a>
+          <!-- fullname -->
+          <a href="#name"><span class="white-text name">Username</span></a>
+          <!-- email -->
+          <a href="#email"><span class="white-text email">email@example.com</span></a>
+        </div>
+      </li>
+      <li><a class="subheader">Navigate</a></li>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="favorites.html">Favorites</a></li>
+      <li><a href="room_list.html">Roomlist</a></li>
+      <li>
+        <div class="divider"></div>
+      </li>
+      <li><a class="waves-effect" href="about.html">About Us</a></li>
+    </ul>
+    <!-- Sidenav user logged in ENDS HERE -->
+
+    <!-- Breadcrumb starts here -->
+    <div class="breadcrumb-wrapper-kouk">
+      <ul class="breadcrumb-kouk">
+        <li>
+        <a href="#!" class="breadcrumb">First</a>
+      </li>
+      <li>
+        <a href="#!" class="breadcrumb">Second</a>
+      </li>
+      <li>  
+      <a href="#!" class="breadcrumb">Third</a>
+      </li>
+      </ul>
+    </div>
+  </div>
+  <!-- Breadcrumb ends here -->
+</header>
+    
+<main>
+
+<!-- MAIN CONTENT -->
+
+<div class="container login-kouk">
+  <div class="section">
+  <div class="row">
+    <div class="col s4 hide-on-small-and-down">
+    </div>
+
+    <div class="col s12">
+    <form action="">
+      <label for="username">Username:</label><br>
+      <div class="input-field">
+          <i class="material-icons prefix hide-on-small-and-down">account_circle</i>
+          <input class="input-kouk" type="text" id="username" name="fname" value="" placeholder="Type your username" required><br>
+      </div>
+      <label for="password">Password:</label><br>
+      <div class="input-field">
+          <i class="material-icons prefix hide-on-small-and-down">vpn_key</i>
+          <input class="input-kouk" type="password" id="password" name="password" value="" placeholder="Enter your password" required><br><br>
+      </div>
+      <div class="col s12 center">
+      <input class="waves-effect waves-light btn btn-kouk center-block" type="submit" value="Log In">
+      </div>
+    </form> 
+  </div>
+    <div class="col s4 hide-on-small-and-down"></div>
+  </div>
+</div>
+</div>
+
+
+
+<!-- ENDS OF MAIN CONTENT -->
+
+</main>
+
+  <!-- Footer starts here -->
+
+  <footer class="page-footer footer hide-on-small-and-down">
+    <div class="footer-copyright">
+      <div class="container">
+      © 2020 Copyright Text
+      <a class="grey-text text-lighten-4 right" href="https://www.kouk.gr">kouk.gr</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- footer ends here -->
+
+ <!--JavaScript at end of body for optimized loading-->
+ <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+ <script src="js/materialize.js"></script>
+ <script src="js/init.js"></script>
+
+  
+ 
+ <script>
+
+//  DROPDOWNS
+  document.addEventListener('DOMContentLoaded', function() {
+   var elems = document.querySelectorAll('select');
+   var instances = M.FormSelect.init(elems);
+ });
+
+//  DATEPICKERS
+ document.addEventListener('DOMContentLoaded', function() {
+   var elems = document.querySelectorAll('.datepicker');
+   var instances = M.Datepicker.init(elems);
+ });
+
+ //MOBILE SIDENAV
+ document.addEventListener('DOMContentLoaded', function() {
+   var elems = document.querySelectorAll('.sidenav');
+   var instances = M.Sidenav.init(elems);
+ });
+
+
+
+</script>
+  </body>
+</html>
+
+

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+    
+    <title>Hotels ~ Home</title>
+
+    <!-- CSS reset -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <!-- Google Material Icons Font -->
+    <link href="css/materialicons.css" rel="stylesheet">
+    <!-- Materialize CSS Framework -->
+    <link rel="stylesheet" href="css/materialize.css" type="text/css">
+    <!-- My personal CSS lib -->
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+  </head>
+  <!-- Body class -->
+  <body class="home">
+    
+  <header>
+    <!-- Navbar starts here -->
+    <div class="nav-kouk ">
+    <nav role="navigation">
+      <div class="nav-wrapper container">
+        <a href="#" class="brand-logo left ">Hotels</a>
+        <a href="#"  data-target="slide-out" class="right sidenav-trigger"><i class="material-icons left">menu</i></a>
+        <ul id="nav-mobile" class="right hide-on-small-and-down">
+          <li class="active"><a href="index.html"><i class="material-icons left">home</i>Home</a></li>      
+          <li style="display: none;"><a href="profile.html"><i class="material-icons left">people</i>Profile</a></li>      
+          <li><a href="login.html"><i class="material-icons left">play_arrow</i>Login</a></li>     
+         </ul>
+        
+      </div>
+    </nav>
+    <!-- Navbar ends here -->
+
+    <!-- Sidenav user logged in  STARTS HERE-->
+    <ul id="slide-out" class="sidenav">
+      <li>
+
+        <!-- CHECK IF IS LOGGED IN ELSE DISPLAY NONE -->
+        <div class="user-view">
+          <div class="background">
+            <img src="img/back1.jpg">
+          </div>
+          <!-- GET USER PERSONAL INFO -->
+          <!-- image/avatar -->
+          <a href="#user"><img class="circle" src="img/back.jpg"></a>
+          <!-- fullname -->
+          <a href="#name"><span class="white-text name">Username</span></a>
+          <!-- email -->
+          <a href="#email"><span class="white-text email">email@example.com</span></a>
+        </div>
+      </li>
+      <li><a class="subheader">Navigate</a></li>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="favorites.html">Favorites</a></li>
+      <li><a href="room_list.html">Roomlist</a></li>
+      <li>
+        <div class="divider"></div>
+      </li>
+      <li><a class="waves-effect" href="about.html">About Us</a></li>
+    </ul>
+    <!-- Sidenav user logged in ENDS HERE -->
+
+    <!-- Breadcrumb starts here -->
+    <div class="breadcrumb-wrapper-kouk ">
+      <ul class="breadcrumb-kouk">
+        <li>
+        <a href="#!" class="breadcrumb">First</a>
+      </li>
+      <li>
+        <a href="#!" class="breadcrumb">Second</a>
+      </li>
+      <li>  
+      <a href="#!" class="breadcrumb">Third</a>
+      </li>
+      </ul>
+    </div>
+  </div>
+  <!-- Breadcrumb ends here -->
+</header>
+    
+<main>
+
+<!-- MAIN CONTENT -->
+<div class="container box-kouk wrapper">
+  <div class="section">
+    <div class="row">
+      <form>
+        <!-- Choose city selector -->
+        <div class="input-field col s6">
+          <select>
+            <option value="" disabled selected>City</option>
+            <option value="1">Athens</option>
+            <option value="2">Patra</option>
+          </select>
+          <label>Choose city</label>
+        </div>
+        <!-- Room type selector -->
+        <div class="input-field col s6">
+          <select>
+            <option value="" disabled selected>Room Type</option>
+            <option value="1">Single</option>
+            <option value="2">Double</option>
+          </select>
+          <label   >Room type</label>
+       </div>
+       <!-- From date picker -->
+       <div class="col s6">
+         <label >From Date:</label>
+          <input type="text" class="datepicker" required>
+        </div>
+        <!-- To date picker -->
+        <div class="col s6">
+          <label >To Date:</label>
+          <input type="text" class="datepicker" required>    
+        </div>
+        
+        <div class="col s12 center">
+          <input class="waves-effect waves-light btn btn-search-kouk" type="submit" value="Find">   
+        </div> 
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- HERE ENDS MAIN CONTENT -->
+
+</main>
+
+  <!-- Footer starts here -->
+
+  <footer class="page-footer footer hide-on-small-and-down">
+    <div class="footer-copyright">
+      <div class="container">
+      © 2020 Copyright Text
+      <a class="grey-text text-lighten-4 right" href="https://www.kouk.gr">kouk.gr</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- footer ends here -->
+
+
+  <!--JavaScript at end of body for optimized loading-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+   
+  
+  <script>
+
+ //  DROPDOWNS
+   document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems);
+  });
+ 
+ //  DATEPICKERS
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.datepicker');
+    var instances = M.Datepicker.init(elems);
+  });
+
+  //MOBILE SIDENAV
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems);
+  });
+
+ 
+
+</script>
+
+
+
+</body>
+</html>
+
+

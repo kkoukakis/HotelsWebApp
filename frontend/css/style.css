@@ -1,0 +1,235 @@
+/*
+------------------------
+      CSS  Styles
+ based on MaterializeCSS
+      created by
+Konstantinos Koukakis 
+------------------------
+*/
+
+/* NAVBAR STYLES */
+.nav-kouk nav{
+  background-color: rgb(86, 143, 197);
+}
+.nav-kouk nav a{
+  text-align: left;
+  color: whitesmoke;
+}
+.nav-kouk nav ul li:hover{
+  text-decoration: line-through;
+}
+
+/* BREADCRUMB */
+
+ .breadcrumb-kouk{
+  
+  /* visibility: hidden; */
+  padding: 0px 16px;
+  margin-top: 0;
+  list-style: none;
+  background-color: rgba(86, 143, 197, 0.925);
+}
+
+.breadcrumb-kouk li {
+  display: inline;
+  font-size: 18px;
+}
+
+.breadcrumb-kouk li+li:before {
+  padding: 8px;
+  color: black;
+  content: "/\00a0";
+}
+
+.breadcrumb-kouk li a {
+  color: #0275d8;
+  text-decoration: none;
+}
+
+.breadcrumb-kouk  li a:hover {
+  color: #01447e;
+  text-decoration: underline;
+} 
+
+.breadcrumb-wrapper-kouk{
+  padding-top: 0px;
+}
+
+
+/* MAIN */
+main{
+  height: 100%;
+}
+
+/* FOOTER */
+.footer{
+  background-color: #568fc5;
+  
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+
+/* BUTTONS */
+.btn-kouk{
+  background-color: #568fc5;
+  
+  text-align: center;  
+  align-content: center;
+}
+.btn-kouk input {
+
+color:white;
+}
+.btn-kouk:hover{
+ 
+  background-color: #01447e;
+}
+
+.btn-search-kouk{
+  background-color: #568fc5;
+  color: white;
+}
+.btn-search-kouk:hover{
+  background-color: #155994;
+  color: white;
+}
+
+/* login */
+.login-kouk{
+  background-color: white;
+  border: 1px double rgba(88, 75, 146, 0.425);
+  border-radius: 1%;
+}
+
+/*No account link*/
+.no-account-kouk{
+  
+  /* hidden */
+  display: none;
+
+  margin-left: 5px;
+  color: rgba(132, 2, 238, 0.705)
+}
+
+
+.box-kouk{
+  background-color: #e2e2e2ea;
+  border-radius: 1%;
+  
+}
+
+.box-kouk label{
+  color: rgb(15, 135, 233);
+
+}
+
+
+/* THEMES */
+
+body.search{
+  
+  background-color: #d5eaf0;
+
+}
+
+body.home{
+  background-image: url('../img/back7.jpg'); 
+}
+
+
+body.login {
+  background-color: #d5eaf0;
+}
+
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (max-width: 600px) { 
+
+  .nav-kouk nav{
+    background-color:#82cfe4 ;
+
+  }
+
+
+  body.login {
+    background-color: #82cfe4;
+    background-image: linear-gradient(30deg, #80c9dd 12%, transparent 12.5%, transparent 87%, #80c9dd 87.5%, #80c9dd), linear-gradient(150deg, #80c9dd 12%, transparent 12.5%, transparent 87%, #80c9dd 87.5%, #80c9dd), linear-gradient(30deg, #80c9dd 12%, transparent 12.5%, transparent 87%, #80c9dd 87.5%, #80c9dd), linear-gradient(150deg, #80c9dd 12%, transparent 12.5%, transparent 87%, #80c9dd 87.5%, #80c9dd), linear-gradient(60deg, #d5eaf0 25%, transparent 25.5%, transparent 75%, #d5eaf0 75%, #d5eaf0), linear-gradient(60deg, #d5eaf0 25%, transparent 25.5%, transparent 75%, #d5eaf0 75%, #d5eaf0);
+    background-size: 40px 70px;
+    background-position: 0 0, 0 0, 20px 35px, 20px 35px, 0 0, 20px 35px;
+  }
+  
+  body.home{
+    background-color: #82cfe4;
+    background-image: linear-gradient(30deg, #80c9dd 12%, transparent 12.5%, transparent 87%, #80c9dd 87.5%, #80c9dd), linear-gradient(150deg, #80c9dd 12%, transparent 12.5%, transparent 87%, #80c9dd 87.5%, #80c9dd), linear-gradient(30deg, #80c9dd 12%, transparent 12.5%, transparent 87%, #80c9dd 87.5%, #80c9dd), linear-gradient(150deg, #80c9dd 12%, transparent 12.5%, transparent 87%, #80c9dd 87.5%, #80c9dd), linear-gradient(60deg, #d5eaf0 25%, transparent 25.5%, transparent 75%, #d5eaf0 75%, #d5eaf0), linear-gradient(60deg, #d5eaf0 25%, transparent 25.5%, transparent 75%, #d5eaf0 75%, #d5eaf0);
+    background-size: 40px 70px;
+    background-position: 0 0, 0 0, 20px 35px, 20px 35px, 0 0, 20px 35px;
+  
+  }
+
+  .box-kouk{
+    background-color: whitesmoke;
+    border-radius: 1%;
+  }
+  
+  
+  .login-kouk{
+  text-align: center; 
+  padding-right: 5px;
+
+    background-color: whitesmoke;
+    border: 1px black;
+    border-radius: 1%;
+    }
+  
+
+  .btn-kouk{
+    background-color: #82cfe4;
+    color:white !important;
+    text-align: center;  
+    align-content: center;
+  }
+  .btn-kouk:hover{
+    background-color: #077ce2;
+  }
+  
+  .breadcrumb-kouk li a{
+    font-size: 12px;
+  }
+
+}
+
+
+
+/* // Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {  
+
+
+}
+
+/* // Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) { 
+
+ 
+ }
+
+/* // Large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) { 
+ 
+
+  }
+
+
+
+/* BACKGROUND EFFECT OR IMAGE */
+
+
+
