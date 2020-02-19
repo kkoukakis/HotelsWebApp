@@ -91,7 +91,7 @@
       <form>
         <!-- Choose city selector -->
         <div class="input-field col s6">
-          <select>
+          <select class="validate" required>
             <option value="" disabled selected>City</option>
             <option value="1">Athens</option>
             <option value="2">Patra</option>
@@ -99,7 +99,7 @@
           <label>Choose city</label>
         </div>
         <!-- Room type selector -->
-        <div class="input-field col s6">
+        <div class="input-field col s6 validate">
           <select>
             <option value="" disabled selected>Room Type</option>
             <option value="1">Single</option>
@@ -110,12 +110,12 @@
        <!-- From date picker -->
        <div class="col s6">
          <label >From Date:</label>
-          <input type="text" class="datepicker" required>
+          <input type="text" class="datepicker validate" required>
         </div>
         <!-- To date picker -->
         <div class="col s6">
           <label >To Date:</label>
-          <input type="text" class="datepicker" required>    
+          <input type="text" class="datepicker validate" required>    
         </div>
         
         <div class="col s12 center">
