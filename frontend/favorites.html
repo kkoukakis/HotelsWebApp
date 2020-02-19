@@ -9,9 +9,10 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/materialize.css" type="text/css">
     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
   </head>
-  <body class="home">
+  <body>
     
   <header>
     <!-- NAVBAR STARTS HERE -->
@@ -60,41 +61,70 @@
 
 <!-- MAIN CONTENT -->
 
-  <div class="container">
-    <div class="section">
-      <div class="row">
-        <form>
-         <div class="col s4"></div>
-         <div class="input-field col s12">
-           <select>
-             <option value="" disabled selected>City</option>
-             <option value="1">Athens</option>
-             <option value="2">Patra</option>
-           </select>
-           <label>Choose city</label>
-         </div>
-         <div class="col s4"></div>
+<div class="container">
+  <div class="row">
+  <div class="col s12 m4">
+    <div class="row">
+      <h3 class="favorites-title center background-color-kouk2">Favorites</h3>
+    </div>
+    <!-- ITEMS START HERE -->
+    <div class="row">
+     <ol class="collection">
+       <li class="collection-item"><a>Hilton</a></li>
+       <li class="collection-item"><a>Hilton</a></li>
+       <li class="collection-item"><a>Hilton</a></li>
+     </ol>
+    </div>   
+    <!-- ITEMS END HERE -->
+    
+    <div class="row">
+      <h3 class="favorites-title center background-color-kouk2">Reviews</h3>
+    </div>
 
-         <div class="input-field col s12">
-           <select>
-             <option value="" disabled selected>Room Type</option>
-             <option value="1">Single</option>
-             <option value="2">Double</option>
-           </select>
-           <label>Room type</label>
-         </div>
-         <div class="row center s6">
-           <div class="inline container">
-           <label>From Date:</label>
-           <input type="text" class="datepicker">
-           <label>To Date:</label>
-           <input type="text" class="datepicker">    
-           <input class="waves-effect waves-light btn btn-search-kouk" type="submit" value="Find">
-         </div>      
-         </div>
-      </form>
+
+    <!-- ITEMS START HERE-->
+    <div class="row">
+      <div class="row">
+        <ol class="collection">
+          <li class="collection-item">
+            <a>Hilton</a>   
+            <div class="star-rating">
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+            <span class="fa fa-star"></span>
+          </div></li>
+          <li class="collection-item">
+            <a>Hilton</a>
+            <div class="star-rating">
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+            </div>
+          </li>
+          <li class="collection-item">
+            <a>Hilton</a>
+            <div class="star-rating">
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+            </div>
+          </li>
+        </ol>
+      </div>   
+    </div>  
+  </div>  
+  <div class="col s12 m8">
+    <div class="row background-color-kouk">
+      <h3 class="favorites-title2 center">My Bookings</h3>
     </div>
   </div>
+</div>
 </div>
 
 

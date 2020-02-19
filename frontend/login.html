@@ -78,32 +78,32 @@
 
 <!-- MAIN CONTENT -->
 
-<div class="container login-kouk">
+<div class="container login-kouk m10">
   <div class="section">
-  <div class="row">
-    <div class="col s4 hide-on-small-and-down">
-    </div>
+    <div class="row">
+      <div class="col m3 hide-on-small-and-down"></div>
+    
+      <div class="col s12 m6 ">
+        <form name="login-form" action="" onsubmit="return validateForm()">
+          <label for="username">Username:</label><br>
+          <div class="input-field">
+           <i class="material-icons prefix ">account_circle</i>
+           <input class="input-kouk" type="text" id="username" name="username" value="" placeholder="Type your username" required><br>
+          </div>
+          <label for="password">Password:</label><br>
+          <div class="input-field">
+           <i class="material-icons prefix">vpn_key</i>
+           <input class="input-kouk" type="password" id="password" name="password" value="" placeholder="Enter your password" required><br><br>
+          </div>
+          <div class="col s12 center">
+          <input class="waves-effect waves-light btn btn-kouk center-block" type="submit" value="Log In">
+          </div>
+        </form> 
+      </div>
 
-    <div class="col s12">
-    <form action="">
-      <label for="username">Username:</label><br>
-      <div class="input-field">
-          <i class="material-icons prefix hide-on-small-and-down">account_circle</i>
-          <input class="input-kouk" type="text" id="username" name="fname" value="" placeholder="Type your username" required><br>
-      </div>
-      <label for="password">Password:</label><br>
-      <div class="input-field">
-          <i class="material-icons prefix hide-on-small-and-down">vpn_key</i>
-          <input class="input-kouk" type="password" id="password" name="password" value="" placeholder="Enter your password" required><br><br>
-      </div>
-      <div class="col s12 center">
-      <input class="waves-effect waves-light btn btn-kouk center-block" type="submit" value="Log In">
-      </div>
-    </form> 
+      <div class="col m3 hide-on-small-and-down"></div>
+    </div>
   </div>
-    <div class="col s4 hide-on-small-and-down"></div>
-  </div>
-</div>
 </div>
 
 
@@ -125,15 +125,17 @@
 
 
   <!-- footer ends here -->
-
- <!--JavaScript at end of body for optimized loading-->
- <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
- <script src="js/materialize.js"></script>
- <script src="js/init.js"></script>
-
   
- 
- <script>
+  <!--JavaScript at end of body for optimized loading-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/lib.js"></script>
+  
+  
+  
+  <script>
+   validate('username');
 
 //  DROPDOWNS
   document.addEventListener('DOMContentLoaded', function() {
@@ -156,6 +158,23 @@
 
 
 </script>
+
+<script>
+  function validateForm() {
+    var x = document.forms["login-form"]["username"].value;
+    var y = document.forms["login-form"]["password"].value;
+    if (x.trim() == "") {
+      alert("Name must be filled out");
+      return false;
+    }
+    if (y.trim() == "") {
+      alert("Password must be filled out");
+      return false;
+    }
+  }
+  </script>
+
+
   </body>
 </html>
 

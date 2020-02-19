@@ -82,12 +82,48 @@
 
 <div class="container">
   <div class="row">
+    <form>
+      <!-- Choose city selector -->
+      <div class="input-field col s6">
+        <select>
+          <option value="" disabled selected>City</option>
+          <option value="1">Athens</option>
+          <option value="2">Patra</option>
+        </select>
+        <label>Choose city</label>
+      </div>
+      <!-- Room type selector -->
+      <div class="input-field col s6">
+        <select>
+          <option value="" disabled selected>Room Type</option>
+          <option value="1">Single</option>
+          <option value="2">Double</option>
+        </select>
+        <label   >Room type</label>
+     </div>
+     <!-- From date picker -->
+     <div class="col s6">
+       <label >From Date:</label>
+        <input type="text" class="datepicker" required>
+      </div>
+      <!-- To date picker -->
+      <div class="col s6">
+        <label >To Date:</label>
+        <input type="text" class="datepicker" required>    
+      </div>
+      
+      <div class="col s12 center">
+        <input class="waves-effect waves-light btn btn-search-kouk" type="submit" value="Find">   
+      </div> 
+    </form>
+  </div>
+  <div class="row">
     <div class="col s12 m4 l3">
       <div class="card">
         <div class="card-image">
           <img src="img/room_images/room-1.jpg">
           <span class="card-title">Card Title</span>
-          <a class="btn-floating halfway-fab waves-effect waves-light background-color-kouk"><i class="material-icons">account_balance_wallet</i></a>
+          <a href="room.html" class="btn-floating halfway-fab waves-effect waves-light background-color-kouk"><i class="material-icons">account_balance_wallet</i></a>
         </div>
         <div class="card-content">
           <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
@@ -99,7 +135,7 @@
         <div class="card-image">
           <img src="img/room_images/room-1.jpg">
           <span class="card-title">Card Title</span>
-          <a class="btn-floating halfway-fab waves-effect waves-light background-color-kouk"><i class="material-icons">account_balance_wallet</i></a>
+          <a  href="room.html" class="btn-floating halfway-fab waves-effect waves-light background-color-kouk"><i class="material-icons">account_balance_wallet</i></a>
         </div>
         <div class="card-content">
           <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
@@ -111,7 +147,7 @@
         <div class="card-image">
           <img src="img/room_images/room-1.jpg">
           <span class="card-title">Card Title</span>
-          <a class="btn-floating halfway-fab waves-effect waves-light background-color-kouk"><i class="material-icons">account_balance_wallet</i></a>
+          <a  href="room.html" class="btn-floating halfway-fab waves-effect waves-light background-color-kouk"><i class="material-icons">account_balance_wallet</i></a>
         </div>
         <div class="card-content">
           <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
