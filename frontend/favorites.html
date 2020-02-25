@@ -15,12 +15,12 @@
   <body>
     
   <header>
-    <!-- NAVBAR STARTS HERE -->
-    <div class="nav-kouk ">
+  <!-- NAVBAR STARTS HERE -->
+  <div class="nav-kouk ">
     <nav role="navigation">
       <div class="nav-wrapper container">
         <a href="#" class="brand-logo left ">Hotels</a>
-        <a href="#"  data-target="mobile-demo" class="right hide-on-med-and-up sidenav-trigger"><i class="material-icons left">menu</i></a>
+        <a href="#" data-target="slide-out" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-small-and-down">
           <li class="active"><a href="index.html"><i class="material-icons left">home</i>Home</a></li>      
           <li style="display: none;"><a href="profile.html"><i class="material-icons left">people</i>Profile</a></li>      
@@ -30,17 +30,37 @@
       </div>
     </nav>
     <!-- NAVBAR ENDS HERE -->
+  <!-- Sidenav user logged in  STARTS HERE-->
+  <ul id="slide-out" class="sidenav">
+    <li>
+      <div class="user-view">
+        <div class="background">
+          <img src="img/back1.jpg">
+        </div>
+        <!-- GET USER PERSONAL INFO -->
+        <!-- image/avatar -->
+        <a href="#user"><img class="circle" src="img/back.jpg"></a>
+        <!-- fullname -->
+        <a href="#name"><span class="white-text name">Username</span></a>
+        <!-- email -->
+        <a href="#email"><span class="white-text email">email@example.com</span></a>
+      </div>
+    </li>
+    <li><a class="subheader">Navigate</a></li>
+    <li><a href="login.html">Login</a></li>
+    <li><a href="favorites.html">Favorites</a></li>
+    <li><a href="room_list.html">Roomlist</a></li>
+    <li>
+      <div class="divider"></div>
+    </li>
+    <li><a class="waves-effect" href="about.html">About Us</a></li>
+  </ul>
+  <!-- Sidenav user logged in ENDS HERE -->
 
-    <!-- Mobile side nav starts HERE -->
-    <ul class="sidenav" id="mobile-demo">
-      <li><a href="index.html">Home</a></li>
-      <li style="display: none;"><a href="profile.html">Profile</a></li>
-      <li><a href="login.html">Login</a></li>
-    </ul>
-    <!-- Mobile side nav ends HERE -->
+  
 
     <!-- Breadcrumb starts here -->
-    <div class="breadcrumb-wrapper-kouk">
+    <div class="breadcrumb-wrapper-kouk hide-on-small-and-down">
       <ul class="breadcrumb-kouk">
         <li>
         <a href="#!" class="breadcrumb">First</a>
@@ -65,7 +85,7 @@
   <div class="row">
   <div class="col s12 m4">
     <div class="row">
-      <h3 class="favorites-title center background-color-kouk2">Favorites</h3>
+      <h6 class="favorites-title center background-color-kouk2">Favorites</h6>
     </div>
     <!-- ITEMS START HERE -->
     <div class="row">
@@ -78,13 +98,16 @@
     <!-- ITEMS END HERE -->
     
     <div class="row">
-      <h3 class="favorites-title center background-color-kouk2">Reviews</h3>
+      <h6 class="favorites-title center background-color-kouk2">Reviews</h6>
     </div>
 
 
     <!-- ITEMS START HERE-->
     <div class="row">
       <div class="row">
+        <div class="col s12">
+
+
         <ol class="collection">
           <li class="collection-item">
             <a>Hilton</a>   
@@ -116,12 +139,71 @@
             </div>
           </li>
         </ol>
+      </div>
       </div>   
     </div>  
   </div>  
   <div class="col s12 m8">
     <div class="row background-color-kouk">
-      <h3 class="favorites-title2 center">My Bookings</h3>
+      <h6 class="favorites-title2 center">My Bookings</h6>
+    </div>
+    
+    <div class="row">
+
+      <div class="col s4">
+        <!-- TITLE OF ROOM -->
+        <img src="img/room_images/room-4.jpg" class="responsive-img">
+        <!-- STAR RATING --> 
+
+        </div>
+
+        <div class="col s8 ">
+          <div class="row">
+
+            <!-- TITLE OF ROOM -->
+            <span class="favorites-title center black-text">Hilton Zografou </span>
+            <!-- STAR RATING -->
+            <span class="">
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+              <span class="fa fa-star"></span>
+            </span>
+          </div>
+        </div>
+        <div class="row">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius tempore eligendi laudantium delectus qui, ex illum excepturi nobis odio nesciunt sit alias nisi culpa modi numquam in ducimus deserunt veritatis.</p>
+          
+          <div class="col s12 center">
+            <a class="waves-effect waves-light btn" href="room.html">Go to room</a>
+          </div>
+        
+        </div>
+        <div class="col s12">
+        <div class="row background-color-kouk blue-grey">
+          <div class="col s6 m3 yellow-text">
+            <p>Total Cost: 350</p>
+          </div>
+          <div class="col s6 m3">
+            <p>Checkin Date: 11/11/12</p>
+          </div>
+          <div class="col s6 m3">
+            <p>Checkout Date: 11/11/12</p>
+          </div>
+          <div class="col s6 m3">
+            <p>Type of room: 1</p>
+
+          </div>
+
+
+
+        </div>
+      </div>
+   
+    </div>
+    <div class="row">
+      <hr>
     </div>
   </div>
 </div>
