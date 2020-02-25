@@ -64,6 +64,10 @@ Konstantinos Koukakis
   padding-top: 0px;
 }
 
+#map{
+  width:100%;
+  height:350px;
+}
 
 /* MAIN */
 main{
@@ -74,9 +78,9 @@ main{
 .footer{
   background-color: #568fc5;
 
-  position: fixed;
-  left: 0;
+  position: absolute;
   bottom: 0;
+  left: 0;
   width: 100%;
 }
 
@@ -161,7 +165,7 @@ body.search{
 }
 
 body.home{
-  background-image: url('../img/back7.jpg'); 
+  background-image: url("../img/back7.jpg"); 
 }
 
 
@@ -224,9 +228,6 @@ body.login {
     text-align: center;  
     align-content: center;
   }
-  .btn-kouk:hover{
-    /* background-color: #077ce2; */
-  }
   
   .breadcrumb-kouk li a{
     font-size: 12px;
@@ -286,4 +287,22 @@ body{
 
 .asterakia{
   padding-top: 5px;
+}
+
+
+
+
+.page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+.content-wrap {
+  padding-bottom: 2.5rem;    /* Footer height */
+}
+
+.page-footer1 {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }

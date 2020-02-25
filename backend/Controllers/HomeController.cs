@@ -28,6 +28,21 @@ namespace HotelsWebApp.Controllers
             return View();
         }
 
+          public IActionResult Favorites()
+        {
+            return View();
+        }
+        
+        public IActionResult Room()
+        {
+            return View();
+        }
+
+        public IActionResult Roomlist()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

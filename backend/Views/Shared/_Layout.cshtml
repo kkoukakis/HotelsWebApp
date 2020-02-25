@@ -6,10 +6,16 @@
     <title>@ViewData["Title"] - HotelsWebApp</title>
     <link rel="stylesheet" href="~/lib/normalize/normalize.css" />
     <link rel="stylesheet" href="~/lib/materialicons/materialicons.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/lib/materialize/materialize.css" />
     <link rel="stylesheet" href="~/css/style.css" />
+    <!-- ON MAP ONLY -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/>
 </head>
-<body class="@ViewData["Background"]">
+<body class="@ViewData["Background"] page-container">
   <header>
     <!-- Navbar starts here -->
     <div class="nav-kouk ">
@@ -18,7 +24,7 @@
         <a asp-area="" asp-controller="Home" asp-action="Index" class="brand-logo left ">Hotels</a>
         <a href="#"  data-target="slide-out" class="right sidenav-trigger"><i class="material-icons left">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-small-and-down">
-          <li class="active"><a href="index.html"><i class="material-icons left">home</i>Home</a></li>      
+          <li class="active"><a asp-area="" asp-controller="Home" asp-action="Index"><i class="material-icons left">home</i>Home</a></li>      
           <li style="display: none;"><a href="profile.html"><i class="material-icons left">people</i>Profile</a></li>      
           <li><a asp-area="" asp-controller="Home" asp-action="Login"><i class="material-icons left">play_arrow</i>Login</a></li>     
          </ul>
@@ -57,8 +63,8 @@
     <!-- Sidenav user logged in ENDS HERE -->
 
     <!-- Breadcrumb starts here -->
-    <div class="breadcrumb-wrapper-kouk ">
-      <ul class="breadcrumb-kouk">
+    <div class="breadcrumb-wrapper-kouk breadcrumb-kouk">
+      <ul class=" container">
         <li>
         <a href="#!" class="breadcrumb">First</a>
       </li>
@@ -80,15 +86,15 @@
 <!--       MAIN CONTENT      -->
 <!-- ----------------------- -->
 
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div class="container page-wrap">
+        <main role="main" class="pb-3 ">
             @RenderBody()
         </main>
     </div>
 <!-- ----------------------- -->
 <!--   Footer starts here    -->
 <!-- ----------------------- -->
-  <footer class="page-footer footer hide-on-small-and-down">
+  <footer class="page-footer page-footer1 footer hide-on-small-and-down">
     <div class="footer-copyright">
       <div class="container">
       © 2020 Copyright
@@ -117,6 +123,7 @@
        var instances = M.Sidenav.init(elems);
      });
     </script>
+     
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/materialize/materialize.js"></script>
     <script src="~/lib/materialize/init.js"></script>

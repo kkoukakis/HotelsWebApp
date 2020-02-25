@@ -1,0 +1,212 @@
+@{
+    ViewData["Title"] = "HotelsWebApp ~ Room";
+    ViewData["Background"] = "login";
+}
+
+<main>
+
+<!-- MAIN CONTENT -->
+
+<div class="container">
+  <div class="row show-on-small"></div>
+  <div class="row">
+  <div class="col s12 m12">
+    <!-- TITLE , STAR RATINGS, PRICE PER NIGHT -->
+    <div class="row background-color-kouk2">
+      <div class="col s6">
+      <!-- TITLE OF ROOM -->
+      <span class="favorites-title center  left">Hilton~ </span>
+      <!-- STAR RATING -->
+      <span class="">
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star checked"></span>
+        <span class="fa fa-star"></span>
+        <span class="fa fa-star"></span>
+      </span>
+      </div>
+      <div class="col s6">
+        <span class="favorites-title center  right">Per Night: 350euro<span>
+      </div>
+    </div>
+
+
+    <!-- IMAGE OF ROOM-->
+    <div class="row">
+      <div class="col s12 center">
+        <img src="~/img/room_images/room-1.jpg" class="responsive-img">
+      </div>
+    </div>   
+
+    <!-- ROOM INSIGHTS START HERE-->
+    <div class="row center background-color-kouk2">
+      <div class="col m3 s4">
+        <ul>
+          <li>
+            <!-- GET TYPE OF ROOM -->
+            <p class="favorites-title center background-color-kouk2">2</p>
+          </li>
+          <li>
+            <p class="favorites-title center background-color-kouk2"><i class="material-icons prefix inline">people</i> Guests</p>
+          </li>
+
+        </ul>
+      </div>
+      <!-- GET TYPE OF ROOM -->
+      <div class="col m2 s4">
+        <ul>
+          <li>
+            <p class="favorites-title center background-color-kouk2">1</p>
+          </li>
+          <li>
+            <p class="favorites-title center background-color-kouk2"><i class="material-icons prefix inline">meeting_room</i>Type of room</p>
+          </li>
+        </ul>
+      </div>
+      <!-- PARKING -->
+      <div class="col m2 s4">
+        <ul>
+          <li>
+            <p class="favorites-title center background-color-kouk2">Yes</p>
+          </li>
+          <li>
+            <p class="favorites-title center background-color-kouk2"><i class="material-icons prefix inline">local_parking</i>Parking</p>
+          </li>
+        </ul>
+      </div>
+      <!-- WIFI -->
+      <div class="col m2 s6">
+        <ul>
+          <li>
+        <p class="favorites-title center ">Yes</p>
+        </li>
+        <li>
+          <p class="favorites-title center "><i class="material-icons prefix inline">wifi</i>Wifi</p>
+        </li>
+      </div>
+      <!-- PETS -->
+      <div class="col m2 s6">
+        <ul>
+          <li>
+        <p class="favorites-title center ">Yes</p>
+        </li>
+        <li>
+          <p class="favorites-title center "><i class="material-icons prefix inline">pets</i>Pets</p>
+        </li>
+      </div>
+    </div>
+    <!-- ROOM INSIGHTS ENDS HERE-->
+
+    <!-- ROOM'S PROPERTIES -->
+   <div class="row background-color-kouk2 ">
+    <p class="favorites-title left">Room Description</p>
+    </div>
+    <div class="row background-color-kouk">
+    <p class="favorites-title left">Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, modi nostrum blanditiis soluta dicta quo non saepe suscipit repellendus maiores nam animi quos excepturi! Enim labore ab aut culpa omnis!</p>
+    </div>
+    <div class="row center">
+      <a class="waves-effect waves-light btn"><i class="material-icons left">vpn_key</i>Login to book</a>
+
+    </div>
+  
+
+   <!-- MAP ROOM'S PROPERTIES -->
+   <div class="row background-color-kouk2">
+    <div id="map"></div>
+  </div>
+   
+   <!-- ROOM'S PROPERTIES -->
+   <div class="row background-color-kouk2 ">
+    <p class="favorites-title left">Reviews</p>
+  </div>
+  <div class="row background-color-kouk2 ">
+    <ul class="collection">
+      <li class="collection-item"><a>Hilton</a>
+        <span class="right">
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star"></span>
+          <span class="fa fa-star"></span>
+        </span>
+      </li>
+      <li class="collection-item"><a>Hilton</a>
+        <span class="right">
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star"></span>
+          <span class="fa fa-star"></span>
+        </span>
+      </li>
+      <li class="collection-item"><a>Hilton</a>
+        <span class="right">
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star"></span>
+          <span class="fa fa-star"></span>
+        </span>
+      </li>
+    </ul>
+  </div>
+     <!-- ROOM'S PROPERTIES -->
+     <div class="row background-color-kouk2 ">
+      <p class="favorites-title  left">Add Review</p>
+    </div>
+
+</div>
+</div>
+<div class="row"></div>
+<div class="row"></div>
+
+
+
+
+</main>
+
+
+
+<!-- ENDS OF MAIN CONTENT -->
+ <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+   crossorigin=""></script>
+    
+   
+   <script>
+ 
+  
+//  MAPS LEAFLET.JS
+
+   var map = L.map('map',{
+   center: [37.976703, 23.750417],
+   zoom: 14
+   });
+
+
+   L.marker([37.976703, 23.750417]).bindTooltip("Hilton", 
+   {
+       permanent: true, 
+       direction: 'bottom',
+       
+       
+   }).addTo(map);
+ 
+       
+   L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+   attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+   }).addTo(map);
+
+
+ </script>
+
+
+
+<!-- MAP CONTENT -->
+
+
+  
+
+   
+  
+     
