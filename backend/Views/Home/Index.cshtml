@@ -1,7 +1,11 @@
-﻿@{
+﻿@model HotelsWebApp.Models.User
+
+@{
     ViewData["Title"] = "HotelsWebApp";
     ViewData["Background"] = "home";
     ViewData["Page"] = "Index";
+    ViewData["Username"] = Html.DisplayFor(model => model.Username);
+    ViewData["Email"] = Html.DisplayFor(model => model.Email);
 }
 
 <!-- MAIN CONTENT -->
@@ -46,6 +50,5 @@
     </div>
   </div>
 </div>
-
 </main>
 <!-- HERE ENDS MAIN CONTENT -->

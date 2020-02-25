@@ -5,22 +5,27 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+// using System.Security.Claims;
 using HotelsWebApp.Models;
 
 namespace HotelsWebApp.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
+        private WdaContext _context;
+
+
+        public HomeController(WdaContext context){
+            _context = context;
         }
+
 
         public IActionResult Index()
         {
-            return View();
+
+            var room = _context.User;
+            return View(room.First());
         }
 
          public IActionResult Login()
@@ -33,6 +38,9 @@ namespace HotelsWebApp.Controllers
             return View();
         }
         
+        // protected int GetUserId() => this.User.Identity.IsAuthenticated
+
+
         public IActionResult Room()
         {
             return View();
@@ -43,10 +51,6 @@ namespace HotelsWebApp.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
