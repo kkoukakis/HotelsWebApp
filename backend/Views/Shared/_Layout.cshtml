@@ -4,45 +4,123 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - HotelsWebApp</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/normalize/normalize.css" />
+    <link rel="stylesheet" href="~/lib/materialicons/materialicons.css" />
+    <link rel="stylesheet" href="~/lib/materialize/materialize.css" />
+    <link rel="stylesheet" href="~/css/style.css" />
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">HotelsWebApp</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+<body class="@ViewData["Background"]">
+  <header>
+    <!-- Navbar starts here -->
+    <div class="nav-kouk ">
+    <nav role="navigation">
+      <div class="nav-wrapper container">
+        <a asp-area="" asp-controller="Home" asp-action="Index" class="brand-logo left ">Hotels</a>
+        <a href="#"  data-target="slide-out" class="right sidenav-trigger"><i class="material-icons left">menu</i></a>
+        <ul id="nav-mobile" class="right hide-on-small-and-down">
+          <li class="active"><a href="index.html"><i class="material-icons left">home</i>Home</a></li>      
+          <li style="display: none;"><a href="profile.html"><i class="material-icons left">people</i>Profile</a></li>      
+          <li><a asp-area="" asp-controller="Home" asp-action="Login"><i class="material-icons left">play_arrow</i>Login</a></li>     
+         </ul>
+        
+      </div>
+    </nav>
+    <!-- Navbar ends here -->
+
+    <!-- Sidenav user logged in  STARTS HERE-->
+    <ul id="slide-out" class="sidenav">
+      <li>
+
+        <!-- CHECK IF IS LOGGED IN ELSE DISPLAY NONE -->
+        <div class="user-view">
+          <div class="background">
+            <img src="~/img/back1.jpg">
+          </div>
+          <!-- GET USER PERSONAL INFO -->
+          <!-- image/avatar -->
+          <a href="#user"><img class="circle" src="~/img/back.jpg"></a>
+          <!-- fullname -->
+          <a href="#name"><span class="white-text name">Username</span></a>
+          <!-- email -->
+          <a href="#email"><span class="white-text email">email@example.com</span></a>
+        </div>
+      </li>
+      <li><a class="subheader">Navigate</a></li>
+      <li><a asp-area="" asp-controller="Home" asp-action="Login">Login</a></li>
+      <li><a asp-area="" asp-controller="Home" asp-action="Favorites">Favorites</a></li>
+      <li><a asp-area="" asp-controller="Home" asp-action="Roomlist">Search Rooms</a></li>
+      <li>
+        <div class="divider"></div>
+      </li>
+      <li><a class="waves-effect" asp-area="" asp-controller="Home" asp-action="About">About Us</a></li>
+    </ul>
+    <!-- Sidenav user logged in ENDS HERE -->
+
+    <!-- Breadcrumb starts here -->
+    <div class="breadcrumb-wrapper-kouk ">
+      <ul class="breadcrumb-kouk">
+        <li>
+        <a href="#!" class="breadcrumb">First</a>
+      </li>
+      <li>
+        <a href="#!" class="breadcrumb">Second</a>
+      </li>
+      <li>  
+      <a href="#!" class="breadcrumb">Third</a>
+      </li>
+      </ul>
+    </div>
+  </div>
+  <!-- Breadcrumb ends here -->
+</header>
+
+<!-- HEADER ENDS HERE -->
+
+<!-- ----------------------- -->
+<!--       MAIN CONTENT      -->
+<!-- ----------------------- -->
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
+<!-- ----------------------- -->
+<!--   Footer starts here    -->
+<!-- ----------------------- -->
+  <footer class="page-footer footer hide-on-small-and-down">
+    <div class="footer-copyright">
+      <div class="container">
+      © 2020 Copyright
+      <a class="grey-text text-lighten-4 right" href="https://www.kouk.gr" target="_blank">kouk.gr</a>
+      </div>
+    </div>
+  </footer>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - HotelsWebApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+  <!-- footer ends here -->
+
+    <!-- SCRIPTS UNDER HERE -->
+    <script>
+    //  DROPDOWNS
+      document.addEventListener('DOMContentLoaded', function() {
+       var elems = document.querySelectorAll('select');
+       var instances = M.FormSelect.init(elems);
+     });
+        //  DATEPICKERS
+     document.addEventListener('DOMContentLoaded', function() {
+       var elems = document.querySelectorAll('.datepicker');
+       var instances = M.Datepicker.init(elems);
+     });
+         //MOBILE SIDENAV
+     document.addEventListener('DOMContentLoaded', function() {
+       var elems = document.querySelectorAll('.sidenav');
+       var instances = M.Sidenav.init(elems);
+     });
+    </script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/lib/materialize/materialize.js"></script>
+    <script src="~/lib/materialize/init.js"></script>
+    <script src="~/js/lib.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
