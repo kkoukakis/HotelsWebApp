@@ -1,11 +1,17 @@
-﻿@model HotelsWebApp.Models.User
+﻿@* @model HotelsWebApp.Models.Room *@ 
+
 
 @{
     ViewData["Title"] = "HotelsWebApp";
     ViewData["Background"] = "home";
     ViewData["Page"] = "Index";
-    ViewData["Username"] = Html.DisplayFor(model => model.Username);
-    ViewData["Email"] = Html.DisplayFor(model => model.Email);
+
+
+    @* IF USER IS LOGGED IN *@
+    if(ViewData["LoggedIn"] == "Y"){
+    ViewData["Username"] = ViewBag.User.Username;
+    ViewData["Email"] = ViewBag.User.Email;
+    }
 }
 
 <!-- MAIN CONTENT -->
@@ -18,8 +24,10 @@
         <div class="input-field col s6">
           <select class="validate" required>
             <option value="" disabled selected>City</option>
-            <option value="1">Athens</option>
-            <option value="2">Patra</option>
+            @foreach (Room room in ViewBag.Room)  
+            {  
+            <option value="@room.City">@room.City</option>
+            }  
           </select>
           <label>Choose city</label>
         </div>
@@ -27,8 +35,11 @@
         <div class="input-field col s6 validate">
           <select>
             <option value="" disabled selected>Room Type</option>
-            <option value="1">Single</option>
-            <option value="2">Double</option>
+            @foreach (Room room in ViewBag.Room)  
+            {  
+            <option value="@room.RoomType">@room.RoomType</option>
+            }  
+            
           </select>
           <label>Room type</label>
        </div>

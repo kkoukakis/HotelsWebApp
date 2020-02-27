@@ -2,8 +2,12 @@
     ViewData["Title"] = "HotelsWebApp ~ Room";
     ViewData["Background"] = "login";
     ViewData["Page"] = "Room";
+    @* IF USER IS LOGGED IN *@
+    if(ViewData["LoggedIn"] == "Y"){
+    @* ViewData["Username"] = Html.DisplayFor(model => model.Username); *@
+    @* ViewData["Email"] = Html.DisplayFor(model => model.Email); *@
+    }
 }
-
 <main>
 
 <!-- MAIN CONTENT -->

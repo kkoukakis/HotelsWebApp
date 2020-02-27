@@ -1,7 +1,16 @@
+@model HotelsWebApp.Models.Room
+
 @{
-    ViewData["Title"] = "HotelsWebApp ~ Search Results";
+    ViewData["Title"] = "HotelsWebApp ~ Search results";
     ViewData["Background"] = "login";
     ViewData["Page"] = "Roomlist";
+
+
+    @* IF USER IS LOGGED IN *@
+    if(ViewData["LoggedIn"] == "Y"){
+    @* ViewData["Username"] = Html.DisplayFor(model => model.Username); *@
+    @* ViewData["Email"] = Html.DisplayFor(model => model.Email); *@
+    }
 }
 
 <main>

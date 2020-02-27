@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -13,9 +14,10 @@ namespace HotelsWebApp.Controllers
     public class HomeController : Controller
     {
 
+        //In order to access DB
         private WdaContext _context;
 
-
+        //Get Access to DB
         public HomeController(WdaContext context){
             _context = context;
         }
@@ -24,12 +26,23 @@ namespace HotelsWebApp.Controllers
         public IActionResult Index()
         {
 
-            var room = _context.User;
-            return View(room.First());
+            var user = _context.User.First();
+            ViewBag.User = user;
+            ViewBag.User.Username = user.Username;  
+            ViewBag.User.Email = user.Email;  
+            ViewBag.Room = _context.Room;  
+            ViewData["LoggedIn"]="Y";
+            return View();  
+
+            // return View(rooms);
         }
 
          public IActionResult Login()
         {
+            if(ViewData["LoggedIn"]=="Y")
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
 
@@ -48,7 +61,8 @@ namespace HotelsWebApp.Controllers
 
         public IActionResult Roomlist()
         {
-            return View();
+            var rooms = _context.Room;
+            return View(rooms);
         }
 
 
