@@ -1,4 +1,4 @@
-@model HotelsWebApp.Models.Room
+@* @model HotelsWebApp.Models.Room *@
 
 @{
     ViewData["Title"] = "HotelsWebApp ~ Search results";
@@ -11,6 +11,8 @@
     @* ViewData["Username"] = Html.DisplayFor(model => model.Username); *@
     @* ViewData["Email"] = Html.DisplayFor(model => model.Email); *@
     }
+
+    var data = ViewBag.Room;
 }
 
 <main>
@@ -24,8 +26,10 @@
       <div class="input-field validate col s6">
         <select>
           <option value="" disabled selected>City</option>
-          <option value="1">Athens</option>
-          <option value="2">Patra</option>
+             @foreach (var city in data)  
+            {  
+            <option value="@city.City">@city.City</option>
+            }  
         </select>
         <label>Choose city</label>
       </div>
@@ -33,8 +37,10 @@
       <div class="input-field col s6">
         <select>
           <option value="" disabled selected>Room Type</option>
-          <option value="1">Single</option>
-          <option value="2">Double</option>
+           @foreach (var type in data)  
+            {  
+            <option value="@type.RoomType">@type.RoomType</option>
+            }  
         </select>
         <label   >Room type</label>
      </div>
@@ -63,19 +69,29 @@
 
 
   <div class="row">
-    <div class="col s12 m4 l3">
-      <div class="card">
+    
+    <!-- ADD A ROOM -->
+     @foreach (var room in data)  
+    {
+      
+     
+    <div class="col s12 m12 l12">
+      <div class="card centered">
         <div class="card-image">
-          <img src="~/img/room_images/room-1.jpg">
-          <span class="card-title">Hilton</span>
+          <img src="~/img/room_images/@room.Photo">
+          <span class="card-title">@room.Name</span>
           <a asp-area="" asp-controller="Home" asp-action="Room" class="btn-floating halfway-fab waves-effect waves-light background-color-kouk"><i class="material-icons">account_balance_wallet</i></a>
         </div>
         <div class="card-content">
           <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+          <p>RoomType=@room.RoomType</p>
+          <p>Price=@room.Price</p>
         </div>
       </div>
     </div>
-    <div class="col s12 m4 l3">
+    } 
+
+    @* <div class="col s12 m4 l3">
       <div class="card">
         <div class="card-image">
           <img src="~/img/room_images/room-2.jpg">
@@ -87,6 +103,8 @@
         </div>
       </div>
     </div>
+
+
     <div class="col s12 m4 l3">
       <div class="card">
         <div class="card-image">
@@ -98,13 +116,15 @@
           <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
         </div>
       </div>
-    </div>
-  </div>
+    </div> 
+  </div>*@
 </div>
 
 
 
 
 <!-- ENDS OF MAIN CONTENT -->
-
+<div class="row"></div>
+<div class="row"></div>
 </main>
+

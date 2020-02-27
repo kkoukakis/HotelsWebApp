@@ -12,6 +12,10 @@
     ViewData["Username"] = ViewBag.User.Username;
     ViewData["Email"] = ViewBag.User.Email;
     }
+
+
+
+    var data = ViewBag.Room;
 }
 
 <!-- MAIN CONTENT -->
@@ -24,8 +28,8 @@
         <div class="input-field col s6">
           <select class="validate" required>
             <option value="" disabled selected>City</option>
-            @foreach (Room room in ViewBag.Room)  
-            {  
+            @foreach (var room in data)  
+            {
             <option value="@room.City">@room.City</option>
             }  
           </select>
@@ -35,9 +39,10 @@
         <div class="input-field col s6 validate">
           <select>
             <option value="" disabled selected>Room Type</option>
-            @foreach (Room room in ViewBag.Room)  
+            
+            @foreach (var type in data)  
             {  
-            <option value="@room.RoomType">@room.RoomType</option>
+            <option value="@type.RoomType">@type.RoomType</option>
             }  
             
           </select>

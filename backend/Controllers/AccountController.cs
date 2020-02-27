@@ -23,7 +23,7 @@ namespace HotelsWebApp.Controllers
 
         public IActionResult Login()
         {
-            if(ViewData["LoggedIn"] == "Y"){
+            if((string)ViewData["LoggedIn"] == "Y"){
                 return RedirectToAction("Index", "Home");
             }
             return View();
@@ -31,7 +31,7 @@ namespace HotelsWebApp.Controllers
 
          public IActionResult Logout()
         {
-            if(ViewData["LoggedIn"] == "Y"){
+            if((string)ViewData["LoggedIn"] == "Y"){
                 ViewData["LoggedIn"] = "N"; 
                 return RedirectToAction("Index", "Home");
             }else{

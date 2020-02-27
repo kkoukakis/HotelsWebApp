@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 // using System.Security.Claims;
@@ -31,15 +32,12 @@ namespace HotelsWebApp.Controllers
             ViewBag.User.Username = user.Username;  
             ViewBag.User.Email = user.Email;  
             ViewBag.Room = _context.Room;  
-            ViewData["LoggedIn"]="Y";
             return View();  
-
-            // return View(rooms);
         }
 
          public IActionResult Login()
         {
-            if(ViewData["LoggedIn"]=="Y")
+            if((string)ViewData["LoggedIn"]=="Y")
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -61,8 +59,8 @@ namespace HotelsWebApp.Controllers
 
         public IActionResult Roomlist()
         {
-            var rooms = _context.Room;
-            return View(rooms);
+            ViewBag.Room = _context.Room; 
+            return View();
         }
 
 
