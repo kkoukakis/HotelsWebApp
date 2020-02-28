@@ -1,0 +1,42 @@
+@model HotelsWebApp.Models.WdaContext;
+
+<form method="get" asp-action="Roomlist" asp-controller="Home">
+        <!-- Choose city selector -->
+        <div class="input-field col s6">
+          <select name="city" class="validate" required>
+            <option value="" disabled selected>City</option>
+            @foreach (var city in Model.Room.Select(x => x.City).Distinct())  
+            {
+            <option value="@city">@city</option>
+            }  
+          </select>
+          <label>Choose city</label>
+        </div>
+        <!-- Room type selector -->
+        <div class="input-field col s6 validate">
+          <select name="roomtype">
+            <option value="" disabled selected>Room Type</option>
+            
+            @foreach (var type in Model.RoomType.Select(x => x.room_type).Distinct())  
+            {  
+            <option value="@type">@type</option>
+            }  
+            
+          </select>
+          <label>Room type</label>
+       </div>
+       <!-- From date picker -->
+       <div class="col s6">
+         <label >From Date:</label>
+          <input  name="dateFROM" type="text" class="datepicker validate" required>
+        </div>
+        <!-- To date picker -->
+        <div class="col s6">
+          <label >To Date:</label>
+          <input name="dateTO" type="text" class="datepicker validate" required>    
+        </div>
+        
+        <div class="col s12 center">
+          <input class="waves-effect waves-light btn btn-search-kouk" type="submit" value="Find">   
+        </div> 
+      </form>

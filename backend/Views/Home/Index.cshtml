@@ -20,46 +20,7 @@
 <div class="container box-kouk wrapper">
   <div class="section">
     <div class="row">
-      <form>
-        <!-- Choose city selector -->
-        <div class="input-field col s6">
-          <select class="validate" required>
-            <option value="" disabled selected>City</option>
-            @foreach (var room in Model.Room.Select(x => x.City).Distinct())  
-            {
-            <option value="@room">@room</option>
-            }  
-          </select>
-          <label>Choose city</label>
-        </div>
-        <!-- Room type selector -->
-        <div class="input-field col s6 validate">
-          <select>
-            <option value="" disabled selected>Room Type</option>
-            
-            @foreach (var type in Model.Room.Select(x => x.RoomType).Distinct())  
-            {  
-            <option value="@type">@type</option>
-            }  
-            
-          </select>
-          <label>Room type</label>
-       </div>
-       <!-- From date picker -->
-       <div class="col s6">
-         <label >From Date:</label>
-          <input type="text" class="datepicker validate" required>
-        </div>
-        <!-- To date picker -->
-        <div class="col s6">
-          <label >To Date:</label>
-          <input type="text" class="datepicker validate" required>    
-        </div>
-        
-        <div class="col s12 center">
-          <input class="waves-effect waves-light btn btn-search-kouk" type="submit" value="Find">   
-        </div> 
-      </form>
+      @await Component.InvokeAsync("Searchbox", Model)
     </div>
   </div>
 </div>

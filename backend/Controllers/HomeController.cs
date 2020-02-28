@@ -49,25 +49,32 @@ namespace HotelsWebApp.Controllers
             return View();
         }
         
-        // protected int GetUserId() => this.User.Identity.IsAuthenticated
-
-
         public IActionResult Room(int RoomId)
         {
             if(RoomId != 0){
                 var db = _context.Room.Where(x => x.RoomId == RoomId).ToList();
+                if(db.Count !=0){
+                ViewBag.Type = _context.RoomType.Where(x => x.id == db.First().RoomType).ToList().First();
                 return View(db);
+                }
             }
             return RedirectToAction("Index", "Home");
         }
 
-        public IActionResult Roomlist(string city)
+        public IActionResult Roomlist(string city, string roomType, string dateFROM, string dateTo, string priceFrom, string priceTill)
         {
             var db = _context;
             ViewBag.Room = _context.Room; 
+            var allCities = db.Room.Select(r => r.City).Distinct().ToArray();
+            var allRoomTypes = db.RoomType
+                               .Select(rt =>Tuple.Create(rt.id,rt.room_type)).ToArray();
+            ViewBag.Cities = allCities;
+            ViewBag.RoomTypes = allRoomTypes;
+
             if(!string.IsNullOrEmpty(city)){
+
                 ViewBag.Search = city;
-                return View(db);
+                return View(db.Room.Where(x => x.City == city));
             }else{
               return View(db);
             }

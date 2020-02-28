@@ -166,6 +166,9 @@ body.search{
 
 body.home{
   background-image: url("../img/back7.jpg"); 
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center top; 
 }
 
 

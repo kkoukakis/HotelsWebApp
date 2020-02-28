@@ -240,11 +240,11 @@ namespace HotelsWebApp.Models
             {
                 entity.ToTable("room_type");
 
-                entity.Property(e => e.Id)
+                entity.Property(e => e.id)
                     .HasColumnName("id")
                     .HasColumnType("int(11)");
 
-                entity.Property(e => e.RoomType1)
+                entity.Property(e => e.room_type)
                     .IsRequired()
                     .HasColumnName("room_type")
                     .HasColumnType("varchar(250)")

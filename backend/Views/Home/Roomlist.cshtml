@@ -1,7 +1,7 @@
 @model HotelsWebApp.Models.WdaContext
 
 @{
-    ViewData["Title"] = "HotelsWebApp ~ Search results: "+ViewBag.Search;
+    ViewData["Title"] = "HotelsWebApp ~ Search results: "+ ViewBag.Search;
     ViewData["Background"] = "login";
     ViewData["Page"] = "Roomlist";
 
@@ -21,56 +21,19 @@
 
 <div class="container">
   <div class="row login-kouk">
-    <form>
-      <!-- Choose city selector -->
-      <div class="input-field validate col s6">
-        <select>
-          <option value="" disabled selected>City</option>
-             @foreach (var city in Model.Room.Select(x => x.City).Distinct())  
-            {  
-            <option value="@city">@city</option>
-            }  
-        </select>
-        <label>Choose city</label>
-      </div>
-      <!-- Room type selector -->
-      <div class="input-field col s6">
-        <select>
-          <option value="" disabled selected>Room Type</option>
-           @foreach (var RoomType in Model.Room.Select(x => x.RoomType).Distinct())  
-            {  
-            <option value="@RoomType">@RoomType</option>
-            }  
-        </select>
-        <label   >Room type</label>
-     </div>
-     <!-- From date picker -->
-     <div class="col s6">
-       <label >From Date:</label>
-        <input type="text" class="datepicker" required>
-      </div>
-      <!-- To date picker -->
-      <div class="col s6">
-        <label >To Date:</label>
-        <input type="text" class="datepicker" required>    
-      </div>
-      
-      <div class="col s12 center">
-        <input class="waves-effect waves-light btn btn-search-kouk" type="submit" value="Find">   
-      </div> 
-    </form>
+    @* LOAD SEARCH BOX COMPONENT *@
+    @await Component.InvokeAsync("Searchbox", Model)
   </div>
-<div class="row">
-  <div class="col s12 background-color-kouk">
-    <h6 class="white-text">Search Results</h6>
+
+  <div class="row">
+    <div class="col s12 background-color-kouk">
+      <h6 class="white-text">Search Results</h6>
+    </div>
   </div>
-</div>
-
-
 
   <div class="row">
     
-    <!-- ADD A ROOM -->
+    <!-- ROOMS -->
 
      @foreach (var room in Model.Room)  
     {
@@ -83,7 +46,6 @@
              @{
             if(ViewData["LoggedIn"] == "Y"){
                   <a asp-area="" asp-controller="Home" asp-action="Room" asp-route-RoomId="@room.RoomId" class="btn-floating halfway-fab waves-effect waves-light background-color-kouk"><i class="material-icons">account_balance_wallet</i></a>
-       
             }
 
           }
@@ -99,11 +61,8 @@
             }
 
           }
-          <a asp-controller="Home" asp-action="Room" asp-route-RoomId="@room.RoomId" class="waves-effect waves-light btn"><i class="material-icons left">house</i>Book it</a>
 
-
-        
-        
+            <a asp-controller="Home" asp-action="Room" asp-route-RoomId="@room.RoomId" class="waves-effect waves-light btn"><i class="material-icons left">house</i>Check this room</a>
         </div>
       </div>
     </div>

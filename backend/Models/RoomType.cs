@@ -5,7 +5,7 @@ namespace HotelsWebApp.Models
 {
     public partial class RoomType
     {
-        public int Id { get; set; }
-        public string RoomType1 { get; set; }
+        public int id { get; set; }
+        public string room_type { get; set; }
     }
 }
