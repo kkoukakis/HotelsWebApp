@@ -4,12 +4,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
+// using HotelsWebApp.Extensions;
 using HotelsWebApp.Models;
+
 
 
 namespace HotelsWebApp
@@ -28,6 +35,13 @@ namespace HotelsWebApp
         {
             services.AddControllersWithViews();
             services.AddDbContext<WdaContext>();
+
+            // ADD AUTHENTICATION
+            // services.AddIdentity<User, UserRole>().AddDefaultTokenProviders();
+            // services.AddTransient<IUserStore<User>, UserStore>();
+            // services.AddTransient<IRoleStore<UserRole>, RoleStore>();
+			
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,9 +66,31 @@ namespace HotelsWebApp
 
             app.UseEndpoints(endpoints =>
             {
+                 endpoints.MapControllerRoute(
+                    name: "filteredList",
+                    pattern: "/Home/",
+                    defaults: new{
+                        controller ="Account",
+                        action = "Login"
+                    }
+                );
+
+
+                endpoints.MapControllerRoute(
+                    name: "login",
+                    pattern: "login",
+                    defaults: new{
+                        controller ="Account",
+                        action = "Login"
+                    }
+                );
+
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                
+              
             });
         }
     }

@@ -1,3 +1,5 @@
+@model System.Collections.Generic.List<HotelsWebApp.Models.Room>;
+
 @{
     ViewData["Title"] = "HotelsWebApp ~ Room";
     ViewData["Background"] = "login";
@@ -10,6 +12,8 @@
 
 
      var data = ViewBag.Room;
+
+     var room = Model.First();
 }
 <main>
 
@@ -23,7 +27,7 @@
     <div class="row background-color-kouk2">
       <div class="col s6">
       <!-- TITLE OF ROOM -->
-      <span class="favorites-title center  left">Hilton~ </span>
+      <span class="favorites-title center  left">@room.Name</span>
       <!-- STAR RATING -->
       <span class="">
         <span class="fa fa-star checked"></span>
@@ -34,7 +38,7 @@
       </span>
       </div>
       <div class="col s6">
-        <span class="favorites-title center  right">Per Night: 350euro<span>
+        <span class="favorites-title center  right">Per Night: @(room.Price)euro<span>
       </div>
     </div>
 
@@ -42,7 +46,7 @@
     <!-- IMAGE OF ROOM-->
     <div class="row">
       <div class="col s12 center">
-        <img src="~/img/room_images/room-1.jpg" class="responsive-img">
+        <img src="~/img/room_images/@(room.Photo)" class="responsive-img">
       </div>
     </div>   
 
@@ -52,7 +56,7 @@
         <ul>
           <li>
             <!-- GET TYPE OF ROOM -->
-            <p class="favorites-title center background-color-kouk2">2</p>
+            <p class="favorites-title center background-color-kouk2">@room.CountOfGuests</p>
           </li>
           <li>
             <p class="favorites-title center background-color-kouk2"><i class="material-icons prefix inline">people</i> Guests</p>
@@ -64,7 +68,7 @@
       <div class="col m2 s4">
         <ul>
           <li>
-            <p class="favorites-title center background-color-kouk2">1</p>
+            <p class="favorites-title center background-color-kouk2">@room.RoomType</p>
           </li>
           <li>
             <p class="favorites-title center background-color-kouk2"><i class="material-icons prefix inline">meeting_room</i>Type of room</p>
@@ -75,7 +79,7 @@
       <div class="col m2 s4">
         <ul>
           <li>
-            <p class="favorites-title center background-color-kouk2">Yes</p>
+            <p class="favorites-title center background-color-kouk2">@{if(room.Parking==1){ WriteLiteral("Yes"); }else{WriteLiteral("No");}}</p>
           </li>
           <li>
             <p class="favorites-title center background-color-kouk2"><i class="material-icons prefix inline">local_parking</i>Parking</p>
@@ -86,7 +90,7 @@
       <div class="col m2 s6">
         <ul>
           <li>
-        <p class="favorites-title center ">Yes</p>
+        <p class="favorites-title center ">@{if(room.Wifi==1){ WriteLiteral("Yes"); }else{WriteLiteral("No");}}</p>
         </li>
         <li>
           <p class="favorites-title center "><i class="material-icons prefix inline">wifi</i>Wifi</p>
@@ -96,7 +100,7 @@
       <div class="col m2 s6">
         <ul>
           <li>
-        <p class="favorites-title center ">Yes</p>
+        <p class="favorites-title center ">@{if(room.PetFriendly==1){ WriteLiteral("Yes"); }else{WriteLiteral("No");}}</p>
         </li>
         <li>
           <p class="favorites-title center "><i class="material-icons prefix inline">pets</i>Pets</p>
@@ -110,10 +114,14 @@
     <p class="favorites-title left">Room Description</p>
     </div>
     <div class="row background-color-kouk">
-    <p class="favorites-title left">Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, modi nostrum blanditiis soluta dicta quo non saepe suscipit repellendus maiores nam animi quos excepturi! Enim labore ab aut culpa omnis!</p>
+    <p class="favorites-title left">@room.LongDescription</p>
+    <p class="favorites-title left black-text">Location:@room.Location</p>
     </div>
     <div class="row center">
       <a class="waves-effect waves-light btn"><i class="material-icons left">vpn_key</i>Login to book</a>
+      
+      @* <a asp-action="Book" asp-rout-test="demo"class="waves-effect waves-light btn"><i class="material-icons left">vpn_key</i>Login to book</a> *@
+
 
     </div>
   
@@ -162,6 +170,9 @@
      <div class="row background-color-kouk2 ">
       <p class="favorites-title  left">Add Review</p>
     </div>
+    <div class="row">
+      <input>
+    </div>
 
 </div>
 </div>
@@ -187,16 +198,15 @@
 //  MAPS LEAFLET.JS
 
    var map = L.map('map',{
-   center: [37.976703, 23.750417],
+   center: [@room.LatLocation, @room.LngLocation],
    zoom: 14
    });
 
 
-   L.marker([37.976703, 23.750417]).bindTooltip("Hilton", 
+   L.marker([@room.LatLocation, @room.LngLocation]).bindTooltip("@room.Name", 
    {
        permanent: true, 
-       direction: 'bottom',
-       
+       direction: 'bottom'
        
    }).addTo(map);
  

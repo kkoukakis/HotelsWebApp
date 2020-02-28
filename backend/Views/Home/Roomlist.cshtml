@@ -1,18 +1,18 @@
-@* @model HotelsWebApp.Models.Room *@
+@model HotelsWebApp.Models.WdaContext
 
 @{
-    ViewData["Title"] = "HotelsWebApp ~ Search results";
+    ViewData["Title"] = "HotelsWebApp ~ Search results: "+ViewBag.Search;
     ViewData["Background"] = "login";
     ViewData["Page"] = "Roomlist";
 
 
     @* IF USER IS LOGGED IN *@
-    if(ViewData["LoggedIn"] == "Y"){
+    if((string)ViewData["LoggedIn"] == "Y"){
     @* ViewData["Username"] = Html.DisplayFor(model => model.Username); *@
     @* ViewData["Email"] = Html.DisplayFor(model => model.Email); *@
     }
 
-    var data = ViewBag.Room;
+    var search = ViewBag.Search;
 }
 
 <main>
@@ -26,9 +26,9 @@
       <div class="input-field validate col s6">
         <select>
           <option value="" disabled selected>City</option>
-             @foreach (var city in data)  
+             @foreach (var city in Model.Room.Select(x => x.City).Distinct())  
             {  
-            <option value="@city.City">@city.City</option>
+            <option value="@city">@city</option>
             }  
         </select>
         <label>Choose city</label>
@@ -37,9 +37,9 @@
       <div class="input-field col s6">
         <select>
           <option value="" disabled selected>Room Type</option>
-           @foreach (var type in data)  
+           @foreach (var RoomType in Model.Room.Select(x => x.RoomType).Distinct())  
             {  
-            <option value="@type.RoomType">@type.RoomType</option>
+            <option value="@RoomType">@RoomType</option>
             }  
         </select>
         <label   >Room type</label>
@@ -71,53 +71,44 @@
   <div class="row">
     
     <!-- ADD A ROOM -->
-     @foreach (var room in data)  
+
+     @foreach (var room in Model.Room)  
     {
-      
-     
+    
     <div class="col s12 m12 l12">
-      <div class="card centered">
-        <div class="card-image">
+      <div class="card">
+        <div class="card-image smaller">
           <img src="~/img/room_images/@room.Photo">
           <span class="card-title">@room.Name</span>
-          <a asp-area="" asp-controller="Home" asp-action="Room" class="btn-floating halfway-fab waves-effect waves-light background-color-kouk"><i class="material-icons">account_balance_wallet</i></a>
+             @{
+            if(ViewData["LoggedIn"] == "Y"){
+                  <a asp-area="" asp-controller="Home" asp-action="Room" asp-route-RoomId="@room.RoomId" class="btn-floating halfway-fab waves-effect waves-light background-color-kouk"><i class="material-icons">account_balance_wallet</i></a>
+       
+            }
+
+          }
         </div>
         <div class="card-content">
-          <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+          <p>@room.ShortDescription</p>
           <p>RoomType=@room.RoomType</p>
           <p>Price=@room.Price</p>
+          @{
+            if(ViewData["LoggedIn"] != "Y"){
+               <a asp-controller="Account" asp-action="Login" class="waves-effect waves-light btn"><i class="material-icons left">vpn_key</i>Login First</a>
+
+            }
+
+          }
+          <a asp-controller="Home" asp-action="Room" asp-route-RoomId="@room.RoomId" class="waves-effect waves-light btn"><i class="material-icons left">house</i>Book it</a>
+
+
+        
+        
         </div>
       </div>
     </div>
     } 
 
-    @* <div class="col s12 m4 l3">
-      <div class="card">
-        <div class="card-image">
-          <img src="~/img/room_images/room-2.jpg">
-          <span class="card-title">Hilton 2</span>
-          <a  asp-area="" asp-controller="Home" asp-action="Room" class="btn-floating halfway-fab waves-effect waves-light background-color-kouk"><i class="material-icons">account_balance_wallet</i></a>
-        </div>
-        <div class="card-content">
-          <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="col s12 m4 l3">
-      <div class="card">
-        <div class="card-image">
-          <img src="~/img/room_images/room-3.jpg">
-          <span class="card-title">Hilton 3</span>
-          <a  asp-area="" asp-controller="Home" asp-action="Room" class="btn-floating halfway-fab waves-effect waves-light background-color-kouk"><i class="material-icons">account_balance_wallet</i></a>
-        </div>
-        <div class="card-content">
-          <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-        </div>
-      </div>
-    </div> 
-  </div>*@
 </div>
 
 

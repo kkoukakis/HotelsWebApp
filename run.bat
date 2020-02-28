@@ -1,2 +1,2 @@
 cd backend
-dotnet run
+dotnet watch run

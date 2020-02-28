@@ -1,5 +1,4 @@
-﻿@* @model HotelsWebApp.Models.Room *@ 
-
+﻿@model HotelsWebApp.Models.WdaContext 
 
 @{
     ViewData["Title"] = "HotelsWebApp";
@@ -12,8 +11,6 @@
     ViewData["Username"] = ViewBag.User.Username;
     ViewData["Email"] = ViewBag.User.Email;
     }
-
-
 
     var data = ViewBag.Room;
 }
@@ -28,9 +25,9 @@
         <div class="input-field col s6">
           <select class="validate" required>
             <option value="" disabled selected>City</option>
-            @foreach (var room in data)  
+            @foreach (var room in Model.Room.Select(x => x.City).Distinct())  
             {
-            <option value="@room.City">@room.City</option>
+            <option value="@room">@room</option>
             }  
           </select>
           <label>Choose city</label>
@@ -40,9 +37,9 @@
           <select>
             <option value="" disabled selected>Room Type</option>
             
-            @foreach (var type in data)  
+            @foreach (var type in Model.Room.Select(x => x.RoomType).Distinct())  
             {  
-            <option value="@type.RoomType">@type.RoomType</option>
+            <option value="@type">@type</option>
             }  
             
           </select>
