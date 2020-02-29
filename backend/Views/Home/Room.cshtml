@@ -5,7 +5,7 @@
     ViewData["Background"] = "login";
     ViewData["Page"] = "Room";
     @* IF USER IS LOGGED IN *@
-    if(ViewData["LoggedIn"] == "Y"){
+    if((string)ViewData["LoggedIn"] == "Y"){
     @* ViewData["Username"] = Html.DisplayFor(model => model.Username); *@
     @* ViewData["Email"] = Html.DisplayFor(model => model.Email); *@
     }
@@ -199,7 +199,8 @@
 
    var map = L.map('map',{
    center: [@room.LatLocation, @room.LngLocation],
-   zoom: 14
+   zoom: 14,
+   scrollWheelZoom: false
    });
 
 

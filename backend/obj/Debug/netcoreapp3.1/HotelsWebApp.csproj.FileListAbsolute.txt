@@ -61,3 +61,4 @@ C:\Users\kkouk\Desktop\NetAcademy\HotelsWebApp\backend\obj\Debug\netcoreapp3.1\R
 C:\Users\kkouk\Desktop\NetAcademy\HotelsWebApp\backend\obj\Debug\netcoreapp3.1\Razor\Views\Account\Logout.cshtml.g.cs
 C:\Users\kkouk\Desktop\NetAcademy\HotelsWebApp\backend\obj\Debug\netcoreapp3.1\Razor\Views\Home\Book.cshtml.g.cs
 C:\Users\kkouk\Desktop\NetAcademy\HotelsWebApp\backend\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Searchbox\Default.cshtml.g.cs
+C:\Users\kkouk\Desktop\NetAcademy\HotelsWebApp\backend\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\Navbar\Default.cshtml.g.cs

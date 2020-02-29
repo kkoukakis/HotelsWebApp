@@ -4,11 +4,11 @@ using HotelsWebApp.Models;
 
 namespace HotelsWebApp.ViewComponents
 {
-    public class Searchbox : ViewComponent
+    public class Navbar : ViewComponent
     {
         private readonly WdaContext _context;
 
-        public Searchbox(WdaContext context)
+        public Navbar(WdaContext context)
         {
             _context = context;
         }

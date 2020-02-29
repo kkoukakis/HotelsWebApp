@@ -7,9 +7,9 @@
 
 
     @* IF USER IS LOGGED IN *@
-    if(ViewData["LoggedIn"] == "Y"){
-    ViewData["Username"] = ViewBag.User.Username;
-    ViewData["Email"] = ViewBag.User.Email;
+    if((string)ViewData["LoggedIn"] == "Y"){
+    ViewData["Username"] = (string)ViewBag.User.Username;
+    ViewData["Email"] =(string) ViewBag.User.Email;
     }
 
     var data = ViewBag.Room;

@@ -28,7 +28,7 @@ namespace HotelsWebApp.Controllers
         {
             var db = _context;
             var user = _context.User.First();
-
+            ViewData["Search"] = "N";
             ViewBag.User = user;
             ViewBag.User.Username = user.Username;  
             ViewBag.User.Email = user.Email;  
@@ -61,23 +61,21 @@ namespace HotelsWebApp.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public IActionResult Roomlist(string city, string roomType, string dateFROM, string dateTo, string priceFrom, string priceTill)
+        public IActionResult Roomlist(string city, string roomType, string dateFROM, string dateTo, string priceFrom, string priceTill, string parking, string petfriendly, string wifi)
         {
             var db = _context;
-            ViewBag.Room = _context.Room; 
-            var allCities = db.Room.Select(r => r.City).Distinct().ToArray();
-            var allRoomTypes = db.RoomType
-                               .Select(rt =>Tuple.Create(rt.id,rt.room_type)).ToArray();
-            ViewBag.Cities = allCities;
-            ViewBag.RoomTypes = allRoomTypes;
-
-            if(!string.IsNullOrEmpty(city)){
-
-                ViewBag.Search = city;
-                return View(db.Room.Where(x => x.City == city));
-            }else{
-              return View(db);
-            }
+             ViewData["Search"] = "Y";
+            if(!string.IsNullOrEmpty(city))ViewBag.city = city;
+            if(!string.IsNullOrEmpty(roomType))ViewBag.roomtype = roomType;
+            if(!string.IsNullOrEmpty(dateFROM))ViewBag.datefrom = dateFROM;
+            if(!string.IsNullOrEmpty(dateTo))ViewBag.dateto = dateTo;
+            if(!string.IsNullOrEmpty(priceFrom))ViewBag.pricefrom = priceFrom;
+            if(!string.IsNullOrEmpty(priceTill))ViewBag.pricetill = priceTill;
+            if(!string.IsNullOrEmpty(parking))ViewBag.parking = parking=="on" ? "1" : "0";
+            if(!string.IsNullOrEmpty(wifi))ViewBag.wifi = wifi =="on" ? "1" : "0";
+            if(!string.IsNullOrEmpty(petfriendly))ViewBag.petfriendly = petfriendly == "on" ? "1" : "0";
+            return View(db);
+            
         }
 
 

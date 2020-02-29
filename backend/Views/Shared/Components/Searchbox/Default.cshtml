@@ -17,9 +17,9 @@
           <select name="roomtype">
             <option value="" disabled selected>Room Type</option>
             
-            @foreach (var type in Model.RoomType.Select(x => x.room_type).Distinct())  
+            @foreach (var type in Model.RoomType.Select(x => x).Distinct())  
             {  
-            <option value="@type">@type</option>
+            <option value="@type.id">@type.room_type</option>
             }  
             
           </select>
@@ -36,7 +36,52 @@
           <input name="dateTO" type="text" class="datepicker validate" required>    
         </div>
         
-        <div class="col s12 center">
+       
+
+        @{
+            if((string)ViewData["Search"]=="Y"){
+                <div class="row center">
+                    <div class="col s4">
+                        <span>Parking</span>
+                          <div class="switch">
+                                <label>
+                                  No
+                                    <input type="checkbox" name="parking">
+                                    <span class="lever"></span>
+                                Yes
+                                </label>
+                            </div>
+                    </div>
+                      <div class="col s4">
+                          <span>Wifi</span>
+                          <div class="switch">
+                                <label>
+                                  No
+                                    <input type="checkbox" name="wifi">
+                                    <span class="lever"></span>
+                                Yes
+                                </label>
+                            </div>
+                    </div>
+                      <div class="col s4">
+                          <span>Pets</span>
+                          <div class="switch">
+                                <label>
+                                  No
+                                    <input type="checkbox" name="petfriendly">
+                                    <span class="lever"></span>
+                                Yes
+                                </label>
+                            </div>
+                    </div>
+                </div> 
+            }
+        }
+
+         <div class="row">
+             <div class="col s12 center">
           <input class="waves-effect waves-light btn btn-search-kouk" type="submit" value="Find">   
+
+             </div>
         </div> 
       </form>

@@ -5,7 +5,6 @@
     ViewData["Background"] = "login";
     ViewData["Page"] = "Roomlist";
 
-
     @* IF USER IS LOGGED IN *@
     if((string)ViewData["LoggedIn"] == "Y"){
     @* ViewData["Username"] = Html.DisplayFor(model => model.Username); *@
@@ -13,6 +12,31 @@
     }
 
     var search = ViewBag.Search;
+    var city = (string)ViewBag.city;
+    List<HotelsWebApp.Models.Room> rooms = Model.Room.ToList();
+    var roomtype = (string)ViewBag.roomtype;
+    var parking = (string)ViewBag.parking;
+    var wifi = (string)ViewBag.wifi;
+    var petfriendly = (string)ViewBag.petfriendly;
+   
+    if(!string.IsNullOrEmpty(city)){
+     rooms = rooms.Where(x => x.City == city).ToList();
+    }
+
+    if(!string.IsNullOrEmpty(roomtype))
+    if(Int32.Parse(roomtype)>0){
+    var type = Model.RoomType.Where(x => x.id == Int32.Parse(roomtype)).ToList().First();
+     rooms = rooms.Where(x => x.RoomType == type.id).ToList();
+    }
+
+    if(!string.IsNullOrEmpty(roomtype))
+    if(Int32.Parse(roomtype)>0){
+    var type = Model.RoomType.Where(x => x.id == Int32.Parse(roomtype)).ToList().First();
+     rooms = rooms.Where(x => x.RoomType == type.id).ToList();
+    }
+
+
+
 }
 
 <main>
@@ -35,16 +59,16 @@
     
     <!-- ROOMS -->
 
-     @foreach (var room in Model.Room)  
+     @foreach (var room in rooms)  
     {
     
     <div class="col s12 m12 l12">
       <div class="card">
-        <div class="card-image smaller">
-          <img src="~/img/room_images/@room.Photo">
+        <div class="card-image horizontal">
+          <img class="materialboxed" src="~/img/room_images/@room.Photo">
           <span class="card-title">@room.Name</span>
              @{
-            if(ViewData["LoggedIn"] == "Y"){
+            if((string)ViewData["LoggedIn"] == "Y"){
                   <a asp-area="" asp-controller="Home" asp-action="Room" asp-route-RoomId="@room.RoomId" class="btn-floating halfway-fab waves-effect waves-light background-color-kouk"><i class="material-icons">account_balance_wallet</i></a>
             }
 
@@ -55,10 +79,10 @@
           <p>RoomType=@room.RoomType</p>
           <p>Price=@room.Price</p>
           @{
-            if(ViewData["LoggedIn"] != "Y"){
+            if((string)ViewData["LoggedIn"] != "Y"){}
                <a asp-controller="Account" asp-action="Login" class="waves-effect waves-light btn"><i class="material-icons left">vpn_key</i>Login First</a>
 
-            }
+            
 
           }
 
@@ -67,7 +91,6 @@
       </div>
     </div>
     } 
-
 </div>
 
 

@@ -17,67 +17,10 @@
 </head>
 <body class="@ViewData["Background"] page-container">
   <header>
-    <!-- Navbar starts here -->
-    <div class="nav-kouk ">
-    <nav role="navigation">
-      <div class="nav-wrapper container">
-        <a asp-area="" asp-controller="Home" asp-action="Index" class="brand-logo left ">Hotels</a>
-        <a href="#"  data-target="slide-out" class="right sidenav-trigger"><i class="material-icons left">menu</i></a>
-        <ul id="nav-mobile" class="right hide-on-small-and-down">
-          <li class="active"><a asp-area="" asp-controller="Home" asp-action="Index"><i class="material-icons left">home</i>Home</a></li>      
-          <li style="display: none;"><a href="profile.html"><i class="material-icons left">people</i>Profile</a></li>      
-          @if(ViewData["LoggedIn"] == "Y")
-          {
-          <li><a asp-area="" asp-controller="Account" asp-action="Logout"><i class="material-icons left">play_arrow</i>Logout</a></li>     
-          }else{
-          <li><a asp-area="" asp-controller="Account" asp-action="Login"><i class="material-icons left">play_arrow</i>Login</a></li>     
-          }
-         </ul>
-        
-      </div>
-    </nav>
-    <!-- Navbar ends here -->
-
-    <!-- Sidenav user logged in  STARTS HERE-->
-    <ul id="slide-out" class="sidenav">
-      @{
-        if(ViewData["LoggedIn"] == "Y"){
-          <li>
-        <div class="user-view">
-          <div class="background">
-            <img src="~/img/back1.jpg">
-          </div>
-          @* <!-- GET USER PERSONAL INFO --> *@
-          @* <!-- image/avatar --> *@
-          <a href="#user"><img class="circle" src="~/img/back.jpg"></a>
-          @* <!-- fullname --> *@
-          <a href="#name"><span class="white-text name">@ViewData["Username"] </span></a>
-          @* <!-- email --> *@
-          <a href="#email"><span class="white-text email">@ViewData["Email"]</span></a>
-          </div>
-        </li>
-        }
-      }  
-      <!-- CHECK IF IS LOGGED IN ELSE DISPLAY NONE -->
-      
-      <li><a class="subheader">Menu</a></li>
-      @if(ViewData["LoggedIn"] != "Y"){
-      <li><a asp-area="" asp-controller="Account" asp-action="Login">Login</a></li>
-      }
-      @if(ViewData["LoggedIn"] == "Y"){
-      <li><a asp-area="" asp-controller="Home" asp-action="Favorites">Favorites</a></li>
-      }
-      <li><a asp-area="" asp-controller="Home" asp-action="Roomlist">Search Rooms</a></li>
-      <li>
-        <div class="divider"></div>
-      </li>
-      <li><a class="waves-effect" asp-area="" asp-controller="Home" asp-action="About">About Us</a></li>
-    </ul>
-    <!-- Sidenav user logged in ENDS HERE -->
-
+     @await Component.InvokeAsync("Navbar")
     <!-- Breadcrumb starts here -->
     <div class="breadcrumb-wrapper-kouk breadcrumb-kouk">
-      @if(ViewData["Breadcrumb"]=="true"){
+      @if((string)ViewData["Breadcrumb"]=="true"){
       <ul class=" container">
         <li>
         <a href="#!" class="breadcrumb">First</a>
@@ -132,17 +75,26 @@
      document.addEventListener('DOMContentLoaded', function() {
       var elems = document.querySelectorAll('.datepicker');
     
-    var today = new Date();
-      var currDate = today.getDay();
+      var today = new Date();
+      var currDay = today.getDay();
       var currMonth = today.getMonth();
       var currYear = today.getFullYear();
    
-      var instances = M.Datepicker.init(elems,{format: "dd/mm/yy"});
+      var instances = M.Datepicker.init(elems,{
+        format: "yyyy-mm-dd", 
+        autoClose: true,
+        minDate: new Date()
+        
+        });
       
 
      
      });
 
+      document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.materialboxed');
+    var instances = M.Materialbox.init(elems, options);
+    });
      
 
          //MOBILE SIDENAV
