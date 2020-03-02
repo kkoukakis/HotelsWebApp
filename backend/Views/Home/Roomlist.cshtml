@@ -35,6 +35,24 @@
      rooms = rooms.Where(x => x.RoomType == type.id).ToList();
     }
 
+     if(!string.IsNullOrEmpty(parking)){
+     rooms = rooms.Where(x => x.Parking == Int32.Parse(parking)).ToList();
+    }
+     if(!string.IsNullOrEmpty(wifi)){
+     rooms = rooms.Where(x => x.Wifi == Int32.Parse(wifi)).ToList();
+    }
+     if(!string.IsNullOrEmpty(petfriendly)){
+     rooms = rooms.Where(x => x.PetFriendly == Int32.Parse(petfriendly)).ToList();
+    }
+
+    if(!string.IsNullOrEmpty(ViewBag.pricefrom)){
+      rooms = rooms.Where(x => x.Price >= Int32.Parse(ViewBag.pricefrom)).ToList();
+    }
+
+    if(!string.IsNullOrEmpty(ViewBag.pricetill)){
+      rooms = rooms.Where(x => x.Price <= Int32.Parse(ViewBag.pricetill)).ToList();
+    }
+
 
 
 }

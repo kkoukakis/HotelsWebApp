@@ -1,0 +1,41 @@
+ <!-- SCRIPTS UNDER HERE -->
+    <script>
+    //  DROPDOWNS
+      document.addEventListener('DOMContentLoaded', function() {
+       var elems = document.querySelectorAll('select');
+       var instances = M.FormSelect.init(elems);
+     });
+        //  DATEPICKERS
+     document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.datepicker');
+    
+      var today = new Date();
+      var currDay = today.getDay();
+      var currMonth = today.getMonth();
+      var currYear = today.getFullYear();
+   
+      var instances = M.Datepicker.init(elems,{
+        format: "yyyy-mm-dd", 
+        autoClose: true,
+        minDate: new Date()
+        });
+     });
+
+      document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.materialboxed');
+    var instances = M.Materialbox.init(elems, options);
+    });
+           //MOBILE SIDENAV
+     document.addEventListener('DOMContentLoaded', function() {
+       var elems = document.querySelectorAll('.sidenav');
+       var instances = M.Sidenav.init(elems);
+     });
+    </script>
+     
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/materialize/materialize.js"></script>
+    <script src="~/lib/materialize/init.js"></script>
+    <script src="~/js/lib.js" asp-append-version="true"></script>
+
+   
+    

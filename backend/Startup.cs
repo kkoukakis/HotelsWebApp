@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Session;
 using Microsoft.EntityFrameworkCore;
 // using HotelsWebApp.Extensions;
 using HotelsWebApp.Models;
@@ -35,7 +36,10 @@ namespace HotelsWebApp
         {
             services.AddControllersWithViews();
             services.AddDbContext<WdaContext>();
-
+            services.AddMvc();
+            services.AddDistributedMemoryCache(); // Adds a default in-memory implementation of IDistributedCache
+            services.AddSession();
+           
             // ADD AUTHENTICATION
             // services.AddIdentity<User, UserRole>().AddDefaultTokenProviders();
             // services.AddTransient<IUserStore<User>, UserStore>();
@@ -57,6 +61,10 @@ namespace HotelsWebApp
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+            
+            // IMPORTANT: This session call MUST go before UseMvc()
+            app.UseSession();
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

@@ -65,15 +65,15 @@ namespace HotelsWebApp.Controllers
         {
             var db = _context;
              ViewData["Search"] = "Y";
-            if(!string.IsNullOrEmpty(city))ViewBag.city = city;
-            if(!string.IsNullOrEmpty(roomType))ViewBag.roomtype = roomType;
-            if(!string.IsNullOrEmpty(dateFROM))ViewBag.datefrom = dateFROM;
-            if(!string.IsNullOrEmpty(dateTo))ViewBag.dateto = dateTo;
-            if(!string.IsNullOrEmpty(priceFrom))ViewBag.pricefrom = priceFrom;
-            if(!string.IsNullOrEmpty(priceTill))ViewBag.pricetill = priceTill;
-            if(!string.IsNullOrEmpty(parking))ViewBag.parking = parking=="on" ? "1" : "0";
-            if(!string.IsNullOrEmpty(wifi))ViewBag.wifi = wifi =="on" ? "1" : "0";
-            if(!string.IsNullOrEmpty(petfriendly))ViewBag.petfriendly = petfriendly == "on" ? "1" : "0";
+            if(!string.IsNullOrEmpty(city))       {ViewBag.city = city;                                   ViewBag.lastsearch_city    = ViewBag.city        ;}
+            if(!string.IsNullOrEmpty(roomType))   {ViewBag.roomtype = roomType;                           ViewBag.lastsearch_roomtype = ViewBag.roomType    ;}
+            if(!string.IsNullOrEmpty(dateFROM))   {ViewBag.datefrom = dateFROM;                           ViewBag.lastsearch_datefrom = ViewBag.dateFROM    ;}
+            if(!string.IsNullOrEmpty(dateTo))     {ViewBag.dateto = dateTo;                               ViewBag.lastsearch_dateto = ViewBag.dateto      ;}
+            if(!string.IsNullOrEmpty(priceFrom))  {ViewBag.pricefrom = priceFrom;                         ViewBag.lastsearch_pricefrom = ViewBag.priceFrom   ;}
+            if(!string.IsNullOrEmpty(priceTill))  {ViewBag.pricetill = priceTill;                         ViewBag.lastsearch_pricetill = ViewBag.priceTill   ;}
+            if(!string.IsNullOrEmpty(parking))    {ViewBag.parking = parking == "on" ? "1" : "0";         ViewBag.lastsearch_parking = ViewBag.parking     ;}
+            if(!string.IsNullOrEmpty(wifi))       {ViewBag.wifi = wifi == "on" ? "1" : "0";               ViewBag.lastsearch_wifi = ViewBag.wifi        ;}
+            if(!string.IsNullOrEmpty(petfriendly)){ViewBag.petfriendly = petfriendly == "on" ? "1" : "0"; ViewBag.lastsearch_petfriendly = ViewBag.petfriendly ;}
             return View(db);
             
         }

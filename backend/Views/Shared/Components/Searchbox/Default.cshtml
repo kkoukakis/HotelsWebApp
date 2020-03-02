@@ -1,10 +1,15 @@
 @model HotelsWebApp.Models.WdaContext;
 
-<form method="get" asp-action="Roomlist" asp-controller="Home">
+<form method="get" asp-action="Roomlist" asp-controller="Home" onsubmit="updaterange()">
         <!-- Choose city selector -->
         <div class="input-field col s6">
           <select name="city" class="validate" required>
             <option value="" disabled selected>City</option>
+
+            @if(!string.IsNullOrEmpty(ViewBag.lastsearch_city)){
+             <option value="@ViewBag.lastsearch_city" selected>Last search: @ViewBag.lastsearch_city</option>
+            }
+
             @foreach (var city in Model.Room.Select(x => x.City).Distinct())  
             {
             <option value="@city">@city</option>
@@ -15,8 +20,12 @@
         <!-- Room type selector -->
         <div class="input-field col s6 validate">
           <select name="roomtype">
+
             <option value="" disabled selected>Room Type</option>
-            
+            @if(!string.IsNullOrEmpty(ViewBag.lastsearch_roomtype)){
+             var test = Model.RoomType.Select(x => x.room_type).Distinct().ToArray();
+             <option value="@ViewBag.lastsearch_roomtype" selected>Last search: @test[Int32.Parse(ViewBag.lastsearch_roomtype)-1]</option>
+            }
             @foreach (var type in Model.RoomType.Select(x => x).Distinct())  
             {  
             <option value="@type.id">@type.room_type</option>
@@ -28,60 +37,148 @@
        <!-- From date picker -->
        <div class="col s6">
          <label >From Date:</label>
+          @if(!string.IsNullOrEmpty(ViewBag.lastsearch_datefrom)){
+          <input  name="dateFROM" type="text" class="datepicker validate" value="@ViewBag.lastsearch_datefrom"required>
+          }else{
           <input  name="dateFROM" type="text" class="datepicker validate" required>
+          }
         </div>
         <!-- To date picker -->
         <div class="col s6">
           <label >To Date:</label>
+          @if(!string.IsNullOrEmpty(ViewBag.lastsearch_dateto)){
+            <input name="dateTO" type="text" class="datepicker validate"  value="@ViewBag.lastsearch_dateto" required>    
+          }else{
           <input name="dateTO" type="text" class="datepicker validate" required>    
+
+          }
         </div>
         
        
 
         @{
             if((string)ViewData["Search"]=="Y"){
+
+                <div class ="divider"></div>
+
                 <div class="row center">
                     <div class="col s4">
                         <span>Parking</span>
-                          <div class="switch">
+                          <div id="pk" class="switch">
                                 <label>
                                   No
+                                   @if(ViewBag.lastsearch_parking== "1"){
+                                    <input type="checkbox" name="parking" checked>
+                                   }else{
                                     <input type="checkbox" name="parking">
+                                   }
                                     <span class="lever"></span>
-                                Yes
+                                  Yes
                                 </label>
+                                
                             </div>
                     </div>
                       <div class="col s4">
                           <span>Wifi</span>
-                          <div class="switch">
+                          <div id="wf" class="switch">
                                 <label>
                                   No
+                                   @if(ViewBag.lastsearch_wifi== "1"){
+                                    <input type="checkbox" name="wifi" checked>
+                                   }else{
+
                                     <input type="checkbox" name="wifi">
+                                   }
                                     <span class="lever"></span>
-                                Yes
+                                  Yes
                                 </label>
                             </div>
                     </div>
                       <div class="col s4">
                           <span>Pets</span>
-                          <div class="switch">
+
+                         
+                               <div id="pf" class="switch">
                                 <label>
                                   No
-                                    <input type="checkbox" name="petfriendly">
+                                  @if(ViewBag.lastsearch_petfriendly== "1"){
+                                      <input type="checkbox"name="petfriendly" checked>
+                                    }else{
+                                      <input type="checkbox"  name="petfriendly">
+                                    }
                                     <span class="lever"></span>
-                                Yes
+                                  Yes
                                 </label>
-                            </div>
+                          </div>
                     </div>
                 </div> 
+              <div class = "row center">
+                <div class="col s1"></div>
+                <div class="col s10">
+
+                <p>Budget</p>
+                  <input hidden id="priceFrom" name="priceFrom" type="text" class="price-From"/>
+                  <input hidden id="priceTill" name="priceTill" type="text" class="price-Till"/>
+                <div id="test-slider" placeholder="min and max price"></div>
+                </div>
+                <div class="col s1"></div>
+              </div>
             }
         }
-
+        <div class="row"></div>
          <div class="row">
              <div class="col s12 center">
           <input class="waves-effect waves-light btn btn-search-kouk" type="submit" value="Find">   
-
              </div>
         </div> 
       </form>
+      @{
+        var ok1 = false;
+        var ok2 = false;
+        if(!string.IsNullOrEmpty(ViewBag.lastsearch_pricefrom)) ok1 = true;
+        if(!string.IsNullOrEmpty(ViewBag.lastsearch_pricetill)) ok2 = true;
+        var minPrice = Model.Room.Select(x => x.Price).Distinct().ToList().First();  
+        var minPrice1 = minPrice;
+        if(ok1){      
+          minPrice1 = Int32.Parse(ViewBag.lastsearch_pricefrom);
+        }
+
+        var maxPrice = Model.Room.Select(x => x.Price).Distinct().ToList().Last(); 
+        var maxPrice1 = maxPrice;
+
+        if(ok2){
+           maxPrice1 =Int32.Parse(ViewBag.lastsearch_pricetill);
+        }
+      }
+       <script src="~/lib/materialize/nouislider.js"></script>
+
+    <script>
+        var slider = document.getElementById('test-slider');
+      noUiSlider.create(slider, {
+       start: [@minPrice1, @maxPrice1],
+       connect: true,
+       step: 5,
+       orientation: 'horizontal',
+      
+
+       range: {
+         'min': 0,
+         'max': 1000,
+       },
+       format: wNumb({
+         decimals: 0,
+         thousand: ',',
+        // prefix: '$',
+       })
+      });
+      
+      function updaterange(){
+        document.getElementById('priceFrom').value = slider.noUiSlider.get()[0]
+        document.getElementById('priceTill').value = slider.noUiSlider.get()[1]
+      }
+    
+   
+     
+    
+    
+  </script>

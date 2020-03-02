@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/lib/materialize/materialize.css" />
+    <link rel="stylesheet" href="~/lib/materialize/nouislider.css"/>
     <link rel="stylesheet" href="~/css/style.css" />
     <!-- ON MAP ONLY -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
@@ -20,94 +21,22 @@
      @await Component.InvokeAsync("Navbar")
     <!-- Breadcrumb starts here -->
     <div class="breadcrumb-wrapper-kouk breadcrumb-kouk">
-      @if((string)ViewData["Breadcrumb"]=="true"){
-      <ul class=" container">
-        <li>
-        <a href="#!" class="breadcrumb">First</a>
-      </li>
-      <li>
-        <a href="#!" class="breadcrumb">Second</a>
-      </li>
-      <li>  
-      <a href="#!" class="breadcrumb">Third</a>
-      </li>
-      </ul>
-      }
+      @await Component.InvokeAsync("Breadcrumb")
     </div>
   </div>
   <div class="row"></div>
   <!-- Breadcrumb ends here -->
 </header>
 
-<!-- HEADER ENDS HERE -->
-
-<!-- ----------------------- -->
-<!--       MAIN CONTENT      -->
-<!-- ----------------------- -->
 
     <div class="container page-wrap">
         <main role="main" class="pb-3 ">
             @RenderBody()
         </main>
     </div>
-<!-- ----------------------- -->
-<!--   Footer starts here    -->
-<!-- ----------------------- -->
-  <footer class="page-footer page-footer1 footer hide-on-small-and-down">
-    <div class="footer-copyright">
-      <div class="container">
-      © 2020 Copyright
-      <a class="grey-text text-lighten-4 right" href="https://www.kouk.gr" target="_blank">kouk.gr</a>
-      </div>
-    </div>
-  </footer>
 
-  <!-- footer ends here -->
+   @await Component.InvokeAsync("Footer")
+   @await Component.InvokeAsync("Scripts")
 
-    <!-- SCRIPTS UNDER HERE -->
-    <script>
-    //  DROPDOWNS
-      document.addEventListener('DOMContentLoaded', function() {
-       var elems = document.querySelectorAll('select');
-       var instances = M.FormSelect.init(elems);
-     });
-        //  DATEPICKERS
-     document.addEventListener('DOMContentLoaded', function() {
-      var elems = document.querySelectorAll('.datepicker');
-    
-      var today = new Date();
-      var currDay = today.getDay();
-      var currMonth = today.getMonth();
-      var currYear = today.getFullYear();
-   
-      var instances = M.Datepicker.init(elems,{
-        format: "yyyy-mm-dd", 
-        autoClose: true,
-        minDate: new Date()
-        
-        });
-      
-
-     
-     });
-
-      document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.materialboxed');
-    var instances = M.Materialbox.init(elems, options);
-    });
-     
-
-         //MOBILE SIDENAV
-     document.addEventListener('DOMContentLoaded', function() {
-       var elems = document.querySelectorAll('.sidenav');
-       var instances = M.Sidenav.init(elems);
-     });
-    </script>
-     
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/materialize/materialize.js"></script>
-    <script src="~/lib/materialize/init.js"></script>
-    <script src="~/js/lib.js" asp-append-version="true"></script>
-    @RenderSection("Scripts", required: false)
 </body>
 </html>
