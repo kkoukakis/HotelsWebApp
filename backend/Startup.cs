@@ -76,22 +76,32 @@ namespace HotelsWebApp
             {
                  endpoints.MapControllerRoute(
                     name: "filteredList",
-                    pattern: "/Home/",
+                    pattern: "/Login",
                     defaults: new{
                         controller ="Account",
                         action = "Login"
                     }
                 );
 
-
-                endpoints.MapControllerRoute(
-                    name: "login",
-                    pattern: "login",
+                  endpoints.MapControllerRoute(
+                    name: "filteredList",
+                    pattern: "/Room",
                     defaults: new{
-                        controller ="Account",
-                        action = "Login"
+                        controller ="Home",
+                        action = "Room"
                     }
                 );
+
+                      endpoints.MapControllerRoute(
+                    name: "filteredList",
+                    pattern: "/Roomlist",
+                    defaults: new{
+                        controller ="Home",
+                        action = "Roomlist"
+                    }
+                );
+
+                
 
 
                 endpoints.MapControllerRoute(

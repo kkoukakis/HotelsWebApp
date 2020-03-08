@@ -35,14 +35,20 @@ namespace HotelsWebApp.Controllers
             return View(db);  
         }
 
-         public IActionResult Login()
+      
+
+        [HttpPost]
+         public IActionResult LoggedIn()
         {
-            if((string)ViewData["LoggedIn"]=="Y")
-            {
-                return RedirectToAction("Index", "Home");
-            }
-            return View();
+
+            ViewData["LoggedIn"] = "Y";
+
+            
+            return RedirectToAction("Index", "Home");
+           
         }
+
+
 
           public IActionResult Favorites()
         {
@@ -51,6 +57,7 @@ namespace HotelsWebApp.Controllers
         
         public IActionResult Room(int RoomId)
         {
+            ViewBag.ThisRoom = RoomId;
             if(RoomId != 0){
                 var db = _context.Room.Where(x => x.RoomId == RoomId).ToList();
                 if(db.Count !=0){
@@ -77,6 +84,48 @@ namespace HotelsWebApp.Controllers
             return View(db);
             
         }
+
+
+        // Book room
+        [HttpPost]
+        public IActionResult Book(int RoomId , string CheckInDate, string CheckOutDate)
+        {
+           
+                var entry = new Bookings
+                {
+                    RoomId = RoomId,
+                    UserId = 1,
+                    CheckInDate =  CheckInDate,
+                    CheckOutDate = CheckOutDate,
+                };
+                _context.Bookings.Add(entry);
+                _context.SaveChanges();
+
+                return RedirectToAction("Index", "Home");
+           
+  
+        }
+
+        // Post Review
+        [HttpPost]
+        public IActionResult Review(int Rate , string Text, int RoomId)
+        {
+           
+                var entry = new Reviews
+                {
+                    Rate = Rate,
+                    Text = Text,
+                    UserId =  1,
+                    RoomId = RoomId,
+                };
+                _context.Reviews.Add(entry);
+                _context.SaveChanges();
+
+                return RedirectToAction("Room");
+           
+  
+        }
+
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -151,30 +151,34 @@
         }
       }
        <script src="~/lib/materialize/nouislider.js"></script>
-
+      <script src='https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.0.4/wNumb.min.js'></script>
     <script>
+      
+        
+
         var slider = document.getElementById('test-slider');
       noUiSlider.create(slider, {
-       start: [@minPrice1, @maxPrice1],
+       start: [50, 500],
        connect: true,
-       step: 5,
+       step: 10,
        orientation: 'horizontal',
       
 
        range: {
          'min': 0,
-         'max': 1000,
+         'max': 900
        },
        format: wNumb({
-         decimals: 0,
-         thousand: ',',
+         decimals: false
+         //thousand: ',',
         // prefix: '$',
-       })
+       }),
+
       });
       
       function updaterange(){
-        document.getElementById('priceFrom').value = slider.noUiSlider.get()[0]
-        document.getElementById('priceTill').value = slider.noUiSlider.get()[1]
+        document.getElementById('priceFrom').value = Math.round(slider.noUiSlider.get()[0])
+        document.getElementById('priceTill').value = Math.round(slider.noUiSlider.get()[1])
       }
     
    

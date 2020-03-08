@@ -23,10 +23,14 @@ namespace HotelsWebApp.Controllers
 
         public IActionResult Login()
         {
+
+
             if((string)ViewData["LoggedIn"] == "Y"){
                 return RedirectToAction("Index", "Home");
             }
             return View();
+            
+
         }
 
          public IActionResult Logout()

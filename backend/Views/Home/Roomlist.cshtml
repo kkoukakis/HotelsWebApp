@@ -14,6 +14,7 @@
     var search = ViewBag.Search;
     var city = (string)ViewBag.city;
     List<HotelsWebApp.Models.Room> rooms = Model.Room.ToList();
+    List<HotelsWebApp.Models.Bookings> bookings = Model.Bookings.ToList();
     var roomtype = (string)ViewBag.roomtype;
     var parking = (string)ViewBag.parking;
     var wifi = (string)ViewBag.wifi;
@@ -21,12 +22,6 @@
    
     if(!string.IsNullOrEmpty(city)){
      rooms = rooms.Where(x => x.City == city).ToList();
-    }
-
-    if(!string.IsNullOrEmpty(roomtype))
-    if(Int32.Parse(roomtype)>0){
-    var type = Model.RoomType.Where(x => x.id == Int32.Parse(roomtype)).ToList().First();
-     rooms = rooms.Where(x => x.RoomType == type.id).ToList();
     }
 
     if(!string.IsNullOrEmpty(roomtype))
@@ -48,11 +43,15 @@
     if(!string.IsNullOrEmpty(ViewBag.pricefrom)){
       rooms = rooms.Where(x => x.Price >= Int32.Parse(ViewBag.pricefrom)).ToList();
     }
-
     if(!string.IsNullOrEmpty(ViewBag.pricetill)){
       rooms = rooms.Where(x => x.Price <= Int32.Parse(ViewBag.pricetill)).ToList();
     }
+    if(!string.IsNullOrEmpty(ViewBag.datefrom) && !string.IsNullOrEmpty(ViewBag.datetill)){
+      
+      //CHECK DATES HERE
+    }
 
+    
 
 
 }
@@ -97,8 +96,9 @@
           <p>RoomType=@room.RoomType</p>
           <p>Price=@room.Price</p>
           @{
-            if((string)ViewData["LoggedIn"] != "Y"){}
-               <a asp-controller="Account" asp-action="Login" class="waves-effect waves-light btn"><i class="material-icons left">vpn_key</i>Login First</a>
+            if((string)ViewData["LoggedIn"] != "Y"){
+               @* <a asp-controller="Account" asp-action="Login" class="waves-effect waves-light btn"><i class="material-icons left">vpn_key</i>Login First</a> *@
+            }
 
             
 
